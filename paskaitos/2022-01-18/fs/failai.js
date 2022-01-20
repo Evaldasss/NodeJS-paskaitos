@@ -22,9 +22,7 @@ fs.stat(path.join(__dirname, "/testineDirektorija"), {}, (error, stats) => {
 
 //write file - sukuriamas failas, jo turini galima keisti irasant nauja teksta vietoj zodzio 'HELLO'
 fs.writeFile(
-  path.join(__dirname, "/testineDirektorija", "test.txt"),
-  "HELLO",
-  (error) => {
+  path.join(__dirname, "/testineDirektorija", "test.txt"), "HELLO", (error) => {
     if (error) throw error;
     console.log("failas sekmingai sukurtas");
   }
@@ -32,9 +30,7 @@ fs.writeFile(
 
 //failo skaitymas
 fs.readFile(
-  path.join(__dirname, "/testineDirektorija", "test.html"),
-  "utf8",
-  (error, data) => {
+  path.join(__dirname, "/testineDirektorija", "test.html"), "utf8", (error, data) => {
     if (error) throw error;
     console.log(data);
   }
