@@ -7,7 +7,7 @@ const handlebars = require('express-handlebars');
 const app = express();
 
 /*
-////////////////// Sukuriama nauja direktorija ir 5 failai joje  //////////////////
+////////////////// Sukuriama nauja direktorija ir 6 failai joje  //////////////////
 
 const dirArr = ['templates'];
 let fileArr = ['atsiliepimai.hbs', 'istorija.hbs', 'skaidrumas.hbs', 'spauda.hbs', 'valdymas.hbs', 'index.hbs'];
