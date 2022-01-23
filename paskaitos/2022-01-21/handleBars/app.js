@@ -61,7 +61,7 @@ app.listen(3000);
 /*
 sukurti ir sustylintint penkiu puslapiu nav su nuorodomis. Nuorodos turi buti: 
 imones istorija, 
-atsilipimai, 
+atsiliepimai, 
 mes spaudoje, 
 valdymas, 
 skaidrumas
