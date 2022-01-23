@@ -1,10 +1,10 @@
-//console.log("NPM paleistas log");
+//VEIKIA NARSYKLEJE   port:5500
+//console.log("NPM paleistas log");   
 
 const express = require("express");
 const app = express();
 
 //GET request
-
 
 
 app.get("/test/", (request, response) => {   //cia kreipiasi vartotojas
@@ -18,5 +18,5 @@ app.get("/test/:id", (request, response) => {
   response.send(request.params.id);
 });
 
-
+app.listen(5500);
 
