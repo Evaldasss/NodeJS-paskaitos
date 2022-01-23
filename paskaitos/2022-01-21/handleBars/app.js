@@ -19,14 +19,14 @@ app.set('views', __dirname + '/templates');
 * extname (extension name) - failo gale nurodomas tipas, pvz.html
 * layoutsDir - direktorija, kurioje sukurtas pagrindinis sablono failas
 * defaultLayout - standartinis pagrindinis sablonas */
-app.engine('hbsas', handlebars.engine({
+app.engine('hbs', handlebars.engine({
     extname: 'hbs',     
     layoutsDir: __dirname + '/templates/layouts',
     defaultLayout: 'layout'
 }));
 
 //priskiriamas auksciau nurodytas sablonu variklis
-app.set('view engine', 'hbsas');  //hbs- handlebars extension'as:  apie-mus.hbs, index.hbs
+app.set('view engine', 'hbs');  //hbs- handlebars extension'as:  apie-mus.hbs, index.hbs
 
 
 //titulinis puslapis, kaip sablonas, kad be jokio adreso ismestu standartini turini
@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
                          */
 });
 
-
+//aprasomi router'iai
 app.get('/apie-mus', (req, res) => {
     res.render('apie-mus');
 });
@@ -50,14 +50,20 @@ app.get('/kontaktai', (req, res) => {
    
 });
 
-app.listen(5500);
+app.get('/index', (req, res) => {
+    res.render('index');
+   
+});
+
+app.listen(3000);
 
 
 /*
-sukurkite penkiu  puslapiu nav su nuorodomis. Nuorodos turi buti: 
+sukurti ir sustylintint penkiu puslapiu nav su nuorodomis. Nuorodos turi buti: 
 imones istorija, 
 atsilipimai, 
 mes spaudoje, 
 valdymas, 
 skaidrumas
 */
+ 
