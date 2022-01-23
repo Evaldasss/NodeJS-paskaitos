@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
    res.render('index');  /* kadangi jau pajungtas metodas 'engine()', kuris reikalingas, kad veiktu 'render()' metodas, 
                          'render()' kreipiasi i app.set() eilutej nurodyta 'views' direktorija '/templates', tai paleidus 'render()' metoda,
                           jis kreipsis i direktorija '/templates', isfiltruos visus failus, kuriuos turim toje direktorijoje ir joje susiras 
-                         'index.hbs' faila, t.y kas irasyta skliausteliuose.
+                         'index.hbs' faila, t.y. kas irasyta skliausteliuose.
                             Viska, kas irasyta 'index.hbs' faile, jis sudes i 'layout.hbs' faila, kur nurodytas {{body}} kintamasis 
                             ir ta galutini rezultata atvaizduos narsyklej.
                          */
