@@ -1,6 +1,16 @@
-//VEIKIA NARSYKLEJE  PORT:5500   ??
+//VEIKIA NARSYKLEJE  PORT:5500
 
 /*
+1) Sukurkite prisijungimo formą atvaizduojamą adresu '/login', kurioje būtų du laukeliai: 
+El. pašto adresas ir slaptažodis. Taip pat sukurkite 'post' užklausą,
+ kurioje būtų priiama persiunčiama informacija. Sutikrinkite informaciją 
+ su žemiau pateiktais duomenimis ir, priklausomai nuo rezultato, grąžinkite atsakymą į konsolę. 
+ 
+Administratoriaus prisijungimai:
+info@bit.lt
+1234
+
+2) Atvaizduoti zinute .hbs faile
 
 */
 
