@@ -1,5 +1,10 @@
 //VEIKIA NARSYKLEJE  PORT:5500
 
+/*
+Sukurkite penkių puslapių navigaciją su nuorodomis. Nuorodos būtų tokios:
+Įmonės istorija, Atsiliepimai, Mes spaudoje, Valdymas, Skaidrumas. 
+*/
+
 const fs = require("fs");
 const path = require("path");
 const express = require('express');
