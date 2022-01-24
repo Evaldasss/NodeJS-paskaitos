@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pirmoji aplikacija</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+         
+        }
+        
+        header, footer {
+            display: flex;
+            flex-direction: row;
+            background-color: slategray;
+            justify-content: flex-end;
+         
+        }
+
+        body > div {
+            background-color: seashell;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        nav {
+            border: 1px, solid, red;
+            display: flex;
+        }
+
+        .ul {
+            display: flex;
+            justify-content: space-around;
+            list-style-type: none;
+            padding-inline-start: 0px;
+         }
+
+        a {
+            color: seashell;
+            padding: 1rem;
+            text-decoration: none;
+        }
+        form {
+            padding: 2rem;
+        }
+        footer {
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo nav">
+            <nav>
+                <ul class='ul'>
+                    <li><a href="/index">Home</a></li>
+                    <li><a href="/istorija">Įmonės istorija</a></li>
+                    <li><a href="/valdymas">Valdymas</a></li>
+                    <li><a href="/spauda">Mes spaudoje</a></li>
+                    <li><a href="/skaidrumas">Skaidrumas</a></li>
+                    <li><a href="/atsiliepimai">Atsiliepimai</a></li>
+                    <li><a href="/forma">FORMA</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+   
+     {{{body}}}
+
+    <footer>All rights reserved 2022</footer>
+</body>
+</html>
