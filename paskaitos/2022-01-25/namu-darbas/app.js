@@ -67,12 +67,12 @@ app.get('/', (req, res) => {
  el.replace('.hbs', '')));
 
 
-app.get('/login', (req, res) => {
-  res.render('login');
+app.get('/adform', (req, res) => {
+  res.render('adform');
 });
    
 
-app.post('/loginsubmit', upload.single('failas'), (req, res) => {
+app.post('/adformsubmit', upload.single('failas'), (req, res) => {
   //kelias iki nuotraukos (ivardijam savo img su let variable):
   let image = '/uploads/' + req.file.filename;
    
@@ -87,7 +87,7 @@ app.post('/loginsubmit', upload.single('failas'), (req, res) => {
 (kai turim daugiau nei viena failo input su tuo paciu pavadinimu) 
  */
 /*
-app.post('/loginsubmit', upload.array('failas'), (req, res) => {
+app.post('/adform', upload.array('failas'), (req, res) => {
   //kelias iki nuotraukos (ivardijam savo img su let variable):
     let image = '';
    

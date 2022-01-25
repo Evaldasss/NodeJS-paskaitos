@@ -1,0 +1,51 @@
+{{#if message}}
+
+    <div class="message"> {{message}} </div>
+     
+{{/if}}
+
+<div>
+  <form method="POST" action="/loginsubmit" enctype="multipart/form-data">
+   <label>El.pastas</label>
+   
+   <input type="email" name="mail"/>
+   
+   <label>Slaptazodis</label>
+    
+   <input type="password" name="passw"/>
+  
+    <select name="darzove">
+      <option value="1">agurkai</option>
+      <option value="2">pomidorai</option>
+      <option value="3">kopustai</option>
+    </select>
+   
+   <div>
+     <label><input type="checkbox" name="test1" value="12"/>test1</label>
+     <label><input type="checkbox" name="test2" value="10"/>test2</label>
+{{!-- paduodamos visos reiksmes kaip masyvas --}}
+     <label><input type="checkbox" name="test[]" value="524"/>test3</label>
+     <label><input type="checkbox" name="test[]" value="21"/>test4</label>
+   </div>
+
+<div>  {{!-- paduodamos visos reiksmes kaip masyvas --}}
+   <label><input type="radio" name="radio[]"/>radio1</label>
+   <label><input type="radio" name="radio[]"/>radio2</label>
+   <label><input type="radio" name="radio[]"/>radio3</label>
+   <label><input type="radio" name="radio[]"/>radio4</label>
+</div>
+
+{{!-- failu perdavimui type="file" --}}
+<div>
+  <input type="file" name="failas" required/>
+  <input type="file" name="failas"/>
+  <input type="file" name="failas"/>
+</div>
+
+   <button type="submit">Siusti</button>
+  </form>
+
+  <br>
+{{readers}} <br>
+</div>
+
