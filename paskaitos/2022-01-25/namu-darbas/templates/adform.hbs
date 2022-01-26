@@ -1,72 +1,86 @@
-<form  method="POST" action="/loginsubmit" enctype="multipart/form-data" class="container d-flex flex-row justify-content-center">
-
- <section class="col-5 align-items-center border p-3 mt-3 ms-4">
- 
-   <h6>Ad Detail</h6>
+<form
+  method="POST"
+  action="/adformsubmit"
+  enctype="multipart/form-data"
+  class="container d-flex flex-row justify-content-center"
+>
+  <section class="col-5 align-items-center border p-3 mt-3 ms-4">
+    <h6>Ad Detail</h6>
     <label>Project Title</label>
-    
-        <input class="shadow form-control rounded-pill mt-2 mb-3" placeholder="Title" type="text" required></input>
-        
+
+    <input
+      class="shadow form-control rounded-pill mt-2 mb-3"
+      placeholder="Title"
+      type="text"
+      name="title"
+      value="{{data.title}}"
+      required
+    />
+
     <label>Category</label>
-    
-    <select class="shadow form-control rounded-pill mt-2 mb-3">
-        <option>Select a Category</option>
-        <option>Category 1</option>
-        <option>Category 2</option>
-    </select>
-    
-    <label>Price</label>
-    
-        <input class="shadow form-control rounded-pill mt-2 mb-3" placeholder="Add your price" type="number" required></input>
+     
+     <select class="shadow form-control rounded-pill mt-2 mb-3" name="category">
+         <option value="0" {{#if category}}selected="selected"{{/if}}>Category 0</option>
+         <option value="1" {{#if category}}selected="selected"{{/if}}>Category 1</option>
+         <option value="2" {{#if category}}selected="selected"{{/if}}>Category 2</option>
+     </select>
+     
+     <label>Price</label>
+     
+         <input class="shadow form-control rounded-pill mt-2 mb-3" placeholder="Add your price" type="number" name="price" value="{{data.price}}" required>
+         
+     <label>Photos For Your Ad</label>
+   
+        <div class="input-holder">
+             <input class="shadow form-control mt-2 mb-3" type="file" name="photo" required/>
+             {{!-- <img src="{{image}}" alt="text" style="width: 60px"/> --}}
+             {{!-- Kai norime ikleti daugiau nei viena faila rasom dar input'u --}}
+             <input class="shadow form-control mt-2 mb-3" type="file" name="photo" />
+             <input class="shadow form-control mt-2 mb-3" type="file" name="photo" />
+        </div>
         
-    <label>Photos For Your Ad</label>
-    
-       <div>
-            <input class="shadow form-control mt-2 mb-3" type="file" name="failas" required/>
-            <input class="shadow form-control mt-2 mb-3" type="file" name="failas" required/>
-            <input class="shadow form-control mt-2 mb-3" type="file" name="failas" required/>
-       </div>
-       
-    <label>Ad Description</label
-    >
-        <textarea rows="6" class="shadow form-control mt-2 mb-3"></textarea>
- 
- </section>   
-
-
-<section class="col-4 align-items-center border p-3 ms-5 mt-3 me-4">
- 
-  <h6>Change Password</h6>
+     <label>Ad Description</label>
+     
+         <textarea rows="6" class="shadow form-control mt-2 mb-3" name="description">{{data.description}}</textarea>
   
-    <label>First Name *</label>
-        <iput class="names shadow form-control rounded-pill mt-2 mb-3" type="text" required></iput>
-    <label>Last Name *</label>
-        <iput class="names shadow form-control rounded-pill mt-2 mb-3" type="text" required></iput>
-    <label>Phone</label>
-        <input class="shadow form-control rounded-pill mt-2 mb-3" type="number" required></input>
-    <label>Enter Address</label>
-        <input class="shadow form-control rounded-pill mt-2 mb-3" type="address" required></input>
-    <label>Country</label>
-    <select class="shadow form-control rounded-pill mt-2 mb-3">
-        <option>Select a Country</option>
-        <option>Country 1</option>
-        <option>Country 2</option>
-    </select>
-    <label>State</label>
-    <select class="shadow form-control rounded-pill mt-2 mb-3">
-        <option>Select a State</option>
-        <option>State 1</option>
-        <option>State 2</option>
-    </select>
-    <label>City</label>
-    <select class="shadow form-control rounded-pill mt-2 mb-3">
-        <option>Select a City</option>
-        <option>City 1</option>
-        <option>City 2</option>
-    </select>
-   <button class="btn btn-success rounded-pill ps-5 pe-5" type="submit">Ad Post</button>
-
+  </section>
+ 
+ 
+ <section class="col-4 align-items-center border p-3 ms-5 mt-3 me-4">
+  
+   <h6>Change Password</h6>
+ 
+     <label>First Name *</label>
+         <input class="shadow form-control rounded-pill mt-2 mb-3" type="text" name="name" value="{{data.name}}" required>
+     <label>Last Name *</label>
+         <input class="shadow form-control rounded-pill mt-2 mb-3" type="text" name="surname" value="{{data.surname}}" required>
+     <label>Phone</label>
+         <input class="shadow form-control rounded-pill mt-2 mb-3" type="number" name="phone" value="{{data.phone}}" required>
+     <label>Enter Address</label>
+         <input class="shadow form-control rounded-pill mt-2 mb-3" type="address" name="address" value="{{data.address}}" required>
+     <label>Country</label>
+     <select class="shadow form-control rounded-pill mt-2 mb-3" name="country">
+         <option value="0" {{#if category}}selected="selected"{{/if}}>country 0</option>
+         <option value="1" {{#if category}}selected="selected"{{/if}}>Country 1</option>
+         <option value="2" {{#if category}}selected="selected"{{/if}}>Country 2</option>
+     </select>
+     <label>State</label>
+     <select class="shadow form-control rounded-pill mt-2 mb-3"  name="state">
+         <option value="0" {{#if category}}selected="selected"{{/if}}>State 0</option>
+         <option value="1" {{#if category}}selected="selected"{{/if}}>State 1</option>
+         <option value="2" {{#if category}}selected="selected"{{/if}}>State 2</option>
+     </select>
+     <label>City</label>
+     <select class="shadow form-control rounded-pill mt-2 mb-3"  name="city">
+         <option value="0" {{#if category}}selected="selected"{{/if}}>City 0</option>
+         <option value="1" {{#if category}}selected="selected"{{/if}}>City 1</option>
+         <option value="2" {{#if category}}selected="selected"{{/if}}>City 2</option>
+     </select>
+    <button class="btn btn-success rounded-pill ps-5 pe-5" type="submit">Ad Post</button>
+ 
+  </section>
+ </form>
+ 
+ 
  </section>
 </form>
-
-

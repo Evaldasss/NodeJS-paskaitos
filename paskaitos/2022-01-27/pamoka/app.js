@@ -64,15 +64,17 @@ app.get('/', (req, res) => {
  
  //console.log(routeArr);
  //console.log(routeArr.map(el => el.replace('.hbs', '')));
-      routeArr.map(el => el.replace('.hbs', ''));
+ 
+ routeArr.map(el => 
+ el.replace('.hbs', ''));
 
-      
-app.get('/login', (req, res) => {
-  res.render('login');
+
+app.get('/adform', (req, res) => {
+  res.render('adform');
 });
    
-
-app.post('/loginsubmit', upload.single('failas'), (req, res) => {
+/*
+app.post('/adformsubmit', upload.single('failas'), (req, res) => {
   //kelias iki nuotraukos (ivardijam savo img su let variable):
   let image = '/uploads/' + req.file.filename;
    
@@ -80,22 +82,21 @@ app.post('/loginsubmit', upload.single('failas'), (req, res) => {
    
     res.render('submited', {image});
 });
-
+*/
 
 /*
  Skirtas kelioms foto ikelti- array
 (kai turim daugiau nei viena failo input su tuo paciu pavadinimu) 
  */
-/*
-app.post('/loginsubmit', upload.array('failas'), (req, res) => {
+app.post('/adform', upload.array('failas'), (req, res) => {
   //kelias iki nuotraukos (ivardijam savo img su let variable):
     let image = '';
    
-    console.log(req.files);
+    console.log(req.files);   //daugiskaita, nes bus daugiau nei vienas failas
    
     res.render('submited', {image, data: req.body});
 });
- */
+ 
 
  app.listen(5500);
 

@@ -1,0 +1,32 @@
+<div>
+<br>
+<br>
+Atsiliepimai <br>
+Atsiliepimai <br>
+Atsiliepimai <br>
+Atsiliepimai <br>
+Atsiliepimai <br>
+<br>
+<br>
+
+{{#if objektas}} {{!--objektas--}} {{/if}}  {{!--nepaslepia headingo--}}
+    <h2>Gautas objektas</h2>
+    {{objektas.vardas}} <br>
+    {{objektas.pavarde}}
+
+
+{{!-- patikrina ar masyvas nera tuscias, jei tuscias, tai paslepia tarp <h1> esanti teksta --}}
+{{#if masyvas}}       
+   <h1>Kintamojo rezultatai:</h1>
+      <ul>
+         {{#each masyvas}}
+            <li>{{this}}</li>
+         {{/each}}
+      </ul>
+      {{else}}
+   <h2>Kintamuju nera:</h2>
+{{/if}}
+
+<br>
+{{readers}} <br>
+</div>
