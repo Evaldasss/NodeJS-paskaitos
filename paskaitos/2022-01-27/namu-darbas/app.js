@@ -88,8 +88,8 @@ app.get('/adformsubmit', (req, res) => {
 
 app.post("/adformsubmit", upload.single("photo"), (req, res) => {
   //kelias iki nuotraukos (ivardijam savo img su let variable):
-  let image = "/uploads/" + req.file.filename;
-  let category = false;
+ // let image = "/uploads/" + req.file.filename;
+  /*let category = false;
 
     if(req.body.category == 1){
         category = true;
@@ -101,9 +101,13 @@ app.post("/adformsubmit", upload.single("photo"), (req, res) => {
 
     if(req.body.category == 3){
         category = true;
-    }
+    }*/
+    let data = JSON.stringify(req.body);
+    console.log(data);
+    
+  res.render("adform", { /*image, */info: req.body /*, category*/ });
+  res.redirect('/adform');
 
-  res.render("adform", { image, info: req.body, category });
 });
 
 
@@ -112,16 +116,28 @@ app.post("/adformsubmit", upload.single("photo"), (req, res) => {
  Skirtas kelioms foto ikelti- array
 (kai turim daugiau nei viena failo input su tuo paciu pavadinimu) 
  */
-
+/*
 app.post('/adformsubmit', upload.array('failas'), (req, res) => {
   //kelias iki nuotraukos (ivardijam savo img su let variable):
-  req.files
+  //req.files
   let image = "/uploads/" + req.file.filename;
    
-    console.log(req.files);   //daugiskaita, nes bus daugiau nei vienas failas
-   
+      
     res.render('submited', {image, data: req.body});
 });
+*/
+
+//Duomenu irasymas
+app.post('/simplesubmit', (req, res) => {
+  let data = JSON.stringify(req.body);
+  console.log(data);  
+  res.redirect('/simple');
+});
+
+app.get('/simple', (req, res) => {
+  res.render('simple');
+})
+
 
 
 
