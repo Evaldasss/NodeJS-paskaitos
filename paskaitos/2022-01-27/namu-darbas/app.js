@@ -46,10 +46,6 @@ app.engine(
 app.set("view engine", "hbs");
 
 
-app.get("/", (req, res) => {
-  res.render("index");
-});
-
 
 let routeArr = ["atsiliepimai.hbs", "login.hbs", "index.hbs"];
 
@@ -138,12 +134,11 @@ app.get('/simple', (req, res) => {
 
 
 app.get('/', (req, res) => {
-  fs.readFile(target, 'UTF8', (error, data) => {
+  fs.readFile(target, 'UTF-8', (error, data) => {
       //if (error) throw error;
       let obj = JSON.parse(data);
-      //console.log(data);
-      console.log(obj.title);
-      console.log('lalalala');
+      console.log(data);  //gaunam JSON stringa, kuri reikia konvertuoti i JS objekta
+      console.log(obj);   //konsoleje matom JS objekta
     }
   );
 
@@ -163,8 +158,9 @@ app.get('/adformsubmit', (req, res) => {
 app.post("/adformsubmit-sub", upload.single("photo"), (req, res) => {
   let photography = '/uploads/' + req.file.filename;
   req.body.photo = photography;
-  let data_JSON = JSON.stringify(req.body);
+  let data_JSON = JSON.stringify(req.body);  //konvertuojam i JSON stringa
   console.log(data_JSON);
+  //console.log(target);
     
   //duomenu irasymas naudojantis filesystem
   fs.writeFile(target, data_JSON, (err) => {
