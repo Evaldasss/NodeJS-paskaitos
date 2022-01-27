@@ -62,11 +62,7 @@ routeArr.map((el) =>
       pavarde: "Petrauskas",
     };
 
-    res.render(el.replace(".hbs", ""), {
-      masyvas,
-      objektas,
-      readers,
-    }); /*jei noretusi pervadinti perduodama kintamaji 'turinys', 
+    res.render(el.replace(".hbs", ""), {masyvas, objektas, readers}); /*jei noretusi pervadinti perduodama kintamaji 'turinys', 
                                                       tai naudoti sintakse: ' {pervadintas: ankstesnis}', 
                                                       o layout faile reikia ideti kintamaji '{pervadintas}'*/
   })
