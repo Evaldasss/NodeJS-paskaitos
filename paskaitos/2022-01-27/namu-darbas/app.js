@@ -105,7 +105,7 @@ app.post("/adformsubmit", upload.single("photo"), (req, res) => {
     let data = JSON.stringify(req.body);
     console.log(data);
     
-  res.render("adform", { /*image, */info: req.body /*, category*/ });
+  //res.render("adform", { image, info: req.body, category });
   res.redirect('/adform');
 
 });
