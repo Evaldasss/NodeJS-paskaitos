@@ -16,8 +16,6 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage: storage });
-const target = path.join(__dirname, "database", "adform.json");
-
 
 app.use(
   express.urlencoded({
@@ -87,29 +85,25 @@ app.get('/adformsubmit', (req, res) => {
 })
 
 
+
 app.post("/adformsubmit", upload.single("photo"), (req, res) => {
   //kelias iki nuotraukos (ivardijam savo img su let variable):
-  /*let category = false;
-  
-  if(req.body.category == 1){
-    category = true;
-  }
-  
-  if(req.body.category == 2){
-    category = true;
-  }
-  
-  if(req.body.category == 3){
-    category = true;
-  }*/
-    let image = "/uploads/" + req.file.filename;
-    req.body.image = image;
-    
-    let data = JSON.stringify(req.body);
-    console.log(data);
-    
-  //res.render("adform", { image, info: req.body, category });
-  res.redirect('/adform');
+  let image = "/uploads/" + req.file.filename;
+  let category = false;
+
+    if(req.body.category == 1){
+        category = true;
+    }
+
+    if(req.body.category == 2){
+        category = true;
+    }
+
+    if(req.body.category == 3){
+        category = true;
+    }
+
+  res.render("adform", { image, info: req.body, category });
 });
 
 
@@ -118,68 +112,17 @@ app.post("/adformsubmit", upload.single("photo"), (req, res) => {
  Skirtas kelioms foto ikelti- array
 (kai turim daugiau nei viena failo input su tuo paciu pavadinimu) 
  */
-/*
+
 app.post('/adformsubmit', upload.array('failas'), (req, res) => {
   //kelias iki nuotraukos (ivardijam savo img su let variable):
-  //req.files
+  req.files
   let image = "/uploads/" + req.file.filename;
    
-      
+    console.log(req.files);   //daugiskaita, nes bus daugiau nei vienas failas
+   
     res.render('submited', {image, data: req.body});
 });
-*/
 
-//Duomenu konvertavimas i JSON stringa
-app.post('/simplesubmit', (req, res) => {
-  let data = JSON.stringify(req.body);
-  console.log(data);  
-  res.redirect('/simple');
-});
-
-app.get('/simple', (req, res) => {
-  res.render('simple');
-})
-
-
-app.get('/', (req, res) => {
-  fs.readFile(target, 'UTF8', (error, data) => {
-      //if (error) throw error;
-      let obj = JSON.parse(data);
-      //console.log(data);
-      console.log(obj.title);
-      console.log('lalalala');
-    }
-  );
-
-  res.render('skelbimai');
-});
-
-
-//DUOMENU KONVERTAVIMAS
-
-//skelbimo formos adresasa GET metodu
-app.get('/adformsubmit', (req, res) => {
-  res.render('adform');
-})
-
-
-//skelbimo formos adresas POST metodu
-app.post("/adformsubmit-sub", upload.single("photo"), (req, res) => {
-  let photography = '/uploads/' + req.file.filename;
-  req.body.photo = photography;
-  let data_JSON = JSON.stringify(req.body);
-  console.log(data_JSON);
-    
-  //duomenu irasymas naudojantis filesystem
-  fs.writeFile(target, data_JSON, (err) => {
-    if(err) throw err;
-    console.log('JSON file succesfully created');
-  });
-  res.redirect('/adform');
-});
-
-
-//CRUD -create, read, update, delete
 
 
 app.listen(5500);

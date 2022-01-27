@@ -14,7 +14,7 @@
       type="text"
       name="title"
       value="{{data.title}}"
-      
+      required
     />
 
     <label>Category</label>
@@ -27,7 +27,7 @@
      
      <label>Price</label>
      
-         <input class="shadow form-control rounded-pill mt-2 mb-3" placeholder="Add your price" type="number" name="price" value="{{data.price}}" >
+         <input class="shadow form-control rounded-pill mt-2 mb-3" placeholder="Add your price" type="number" name="price" value="{{data.price}}" required>
          
      <label>Photos For Your Ad</label>
    
@@ -51,13 +51,13 @@
    <h6>Change Password</h6>
  
      <label>First Name *</label>
-         <input class="shadow form-control rounded-pill mt-2 mb-3" type="text" name="name" value="{{data.name}}" >
+         <input class="shadow form-control rounded-pill mt-2 mb-3" type="text" name="name" value="{{data.name}}" required>
      <label>Last Name *</label>
-         <input class="shadow form-control rounded-pill mt-2 mb-3" type="text" name="surname" value="{{data.surname}}" >
+         <input class="shadow form-control rounded-pill mt-2 mb-3" type="text" name="surname" value="{{data.surname}}" required>
      <label>Phone</label>
-         <input class="shadow form-control rounded-pill mt-2 mb-3" type="number" name="phone" value="{{data.phone}}" >
+         <input class="shadow form-control rounded-pill mt-2 mb-3" type="number" name="phone" value="{{data.phone}}" required>
      <label>Enter Address</label>
-         <input class="shadow form-control rounded-pill mt-2 mb-3" type="address" name="address" value="{{data.address}}" >
+         <input class="shadow form-control rounded-pill mt-2 mb-3" type="address" name="address" value="{{data.address}}" required>
      <label>Country</label>
      <select class="shadow form-control rounded-pill mt-2 mb-3" name="country">
          <option value="0" {{#if category}}selected="selected"{{/if}}>country 0</option>
