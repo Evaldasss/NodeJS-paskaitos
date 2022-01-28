@@ -46,37 +46,11 @@ app.engine(
 app.set("view engine", "hbs");
 
 
-
-let routeArr = ["atsiliepimai.hbs", "login.hbs", "index.hbs"];
-
-routeArr.map((el) =>
-  app.get(`/${el.replace(".hbs", "")}`, (req, res) => {
-    let readers = "Tinklapio sveciai: " + Math.floor(Math.random() * 100);
-    let masyvas = []; //['Jonas', 'Petrauskas', 'Petras', 'Jonauskas'];
-    let objektas = {
-      vardas: "Jonas",
-      pavarde: "Petrauskas",
-    };
-
-    res.render(el.replace(".hbs", ""), {masyvas, objektas, readers}); /*jei noretusi pervadinti perduodama kintamaji 'turinys', 
-                                                      tai naudoti sintakse: ' {pervadintas: ankstesnis}', 
-                                                      o layout faile reikia ideti kintamaji '{pervadintas}'*/
-  })
-);
-
-//console.log(routeArr);
-//console.log(routeArr.map(el => el.replace('.hbs', '')));
-routeArr.map((el) => el.replace(".hbs", ""));
-
-
 app.get("/adform", (req, res) => {
   res.render("adform");
 });
 
 
-app.get('/adformsubmit', (req, res) => {
-  res.render('adform');
-})
 
 
 app.post("/adformsubmit", upload.single("photo"), (req, res) => {
@@ -105,59 +79,31 @@ app.post("/adformsubmit", upload.single("photo"), (req, res) => {
 });
 
 
-
-/*
- Skirtas kelioms foto ikelti- array
-(kai turim daugiau nei viena failo input su tuo paciu pavadinimu) 
- */
-/*
-app.post('/adformsubmit', upload.array('failas'), (req, res) => {
-  //kelias iki nuotraukos (ivardijam savo img su let variable):
-  //req.files
-  let image = "/uploads/" + req.file.filename;
-   
-      
-    res.render('submited', {image, data: req.body});
-});
-*/
-
-//Duomenu konvertavimas i JSON stringa
-app.post('/simplesubmit', (req, res) => {
-  let data = JSON.stringify(req.body);
-  console.log(data);  
-  res.redirect('/simple');
-});
-
-app.get('/simple', (req, res) => {
-  res.render('simple');
-})
-
-
 app.get('/', (req, res) => {
   fs.readFile(target, 'UTF-8', (error, data) => {
       //if (error) throw error;
       let obj = JSON.parse(data);
       console.log(data);  //gaunam JSON stringa, kuri reikia konvertuoti i JS objekta
       console.log(obj);   //konsoleje matom JS objekta
-    }
-  );
-
+    });
   res.render('skelbimai');
 });
 
 
 //DUOMENU KONVERTAVIMAS
 
-//skelbimo formos adresasa GET metodu
+//skelbimo formos adresas GET metodu
 app.get('/adformsubmit', (req, res) => {
   res.render('adform');
 })
 
 
-//skelbimo formos adresas POST metodu
+//skelbimo formos submit adresas POST metodu
 app.post("/adformsubmit-sub", upload.single("photo"), (req, res) => {
-  let photography = '/uploads/' + req.file.filename;
-  req.body.photo = photography;
+  let photo = '/uploads/' + req.file.filename;  /* po zodzio '/uploads/' nurodomas dar vienas pasviras bruksnys, 
+                                                         kad kreiptusi i 'uploads' folderi, 
+                                                         nes kitu atveju kreipsis i 'uploads' faila */
+  req.body.photo = photo;
   let data_JSON = JSON.stringify(req.body);  //konvertuojam i JSON stringa
   console.log(data_JSON);
   //console.log(target);
@@ -168,6 +114,21 @@ app.post("/adformsubmit-sub", upload.single("photo"), (req, res) => {
     console.log('JSON file succesfully created');
   });
   res.redirect('/adform');
+});
+
+
+
+//Duomenu konvertavimas i JSON stringa
+app.post('/simplesubmit', (req, res) => {
+  console.log(req.body);  
+  let data = JSON.stringify(req.body);
+  console.log(data);  
+  res.redirect('/simple');
+});
+
+
+app.get('/simple', (req, res) => {
+  res.render('simple');
 });
 
 
