@@ -58,8 +58,8 @@ app.get('/', (req, res) => {
    }
 
    res.render(el.replace('.hbs', ''), {masyvas, objektas, readers});   /*jei noretusi pervadinti perduodama kintamaji 'turinys', 
-                                                      tai naudoti sintakse: ' {pervadintas: ankstesnis}', 
-                                                      o layout faile reikia ideti kintamaji '{pervadintas}'*/
+                                                                      tai naudoti sintakse: ' {pervadintas: ankstesnis}', 
+                                                                      o layout faile reikia ideti kintamaji '{pervadintas}'*/
  }));
  
  //console.log(routeArr);

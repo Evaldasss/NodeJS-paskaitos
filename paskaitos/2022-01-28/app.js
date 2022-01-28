@@ -15,6 +15,7 @@ const storage = multer.diskStorage({
     callback(null, Date.now() + file.originalname);
   },
 });
+//const helpers = require('./helpers/handlebars');
 const upload = multer({ storage: storage });
 const target = path.join(__dirname, "database", "adform.json");
 
@@ -80,14 +81,16 @@ app.post("/adformsubmit", upload.single("photo"), (req, res) => {
 
 app.get('/', (req, res) => {
   fs.readFile(target, 'UTF-8', (error, data) => {
-      //if (error) throw error;
       let obj = JSON.parse(data);
       console.log(data);  //gaunam JSON stringa, kuri reikia konvertuoti i JS objekta
       console.log(obj);   //konsoleje matom JS objekta
-      console.log(obj.photo);   //konsoleje matom JS objekta
+      //console.log(obj.photo);   //konsoleje matom JS objekta
+      //res.json(obj);
+      //res.send(obj);
+      res.render('skelbimai', {data: obj});  //keiciam pavadinima 'obj' i nauja pavadinima 'data'
     });
-  res.render('skelbimai');
-});
+ });
+
 
 
 //DUOMENU KONVERTAVIMAS
@@ -133,6 +136,18 @@ app.get('/simple', (req, res) => {
 
 
 //CRUD -create, read, update, delete
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 app.listen(5500);
