@@ -1,0 +1,13 @@
+<h1>Naujausi skelbimai:</h1>
+<h3>For each listas</h3>
+<ul>
+  {{#each data}}
+    <li>{{@key}}: {{this}}</li>
+  {{/each}}
+</ul>
+
+<h3>Pavieniui</h3>
+<h5>Projekto pavadinimas: {{data.title}} </h5>
+<h5>Category: {{data.category}} </h5>
+<h5>Price: {{data.price}} </h5>
+<h5>Photo: <img src={{data.photo}}> </h5>

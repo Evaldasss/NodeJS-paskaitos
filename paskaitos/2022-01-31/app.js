@@ -87,8 +87,8 @@ app.post("/adformsubmit", upload.single("photo"), (req, res) => {
 app.get('/', (req, res) => {
   fs.readFile(target, 'UTF-8', (error, data) => {
       let obj = JSON.parse(data);
-      console.log(data);  //gaunam JSON stringa, kuri reikia konvertuoti i JS objekta
-      console.log(obj);   //konsoleje matom JS objekta
+      //console.log(data);  //gaunam JSON stringa, kuri reikia konvertuoti i JS objekta
+      //console.log(obj);   //konsoleje matom JS objekta
       //console.log(obj.photo);   //konsoleje matom JS objekta
       //res.json(obj);
       //res.send(obj);
@@ -106,26 +106,44 @@ app.get('/adformsubmit', (req, res) => {
 })
 
 
+
 //skelbimo formos submit adresas POST metodu
 app.post("/adformsubmit-sub", upload.single("photo"), (req, res) => {
-  let photo = '/uploads/' + req.file.filename;  /* po zodzio '/uploads/' nurodomas dar vienas pasviras bruksnys, 
-                                                         kad kreiptusi i 'uploads' folderi, 
-                                                         nes kitu atveju kreipsis i 'uploads' faila */
+  /* po zodzio '/uploads/' nurodomas dar vienas pasviras bruksnys, 
+  kad kreiptusi i 'uploads' folderi, nes kitu atveju kreipsis i 'uploads' faila */
+  let photo = '/uploads/' + req.file.filename;  
   req.body.photo = photo;
-  let data_JSON = JSON.stringify(req.body);  //konvertuojam i JSON stringa
-  console.log(data_JSON);
+  //console.log(data_JSON);
   //console.log(target);
-    
-  //duomenu irasymas naudojantis filesystem
-  fs.writeFile(target, data_JSON, (err) => {
+  //let test = req.body;  //visas musu formos duomenu turinys
+  let test = [];  
+  
+  fs.readFile(target,  (err, eilutes) => {
     if(err) throw err;
-    console.log('JSON file succesfully created');
-  });
-  res.redirect('/adform');
+    //console.log(eilutes);  //tikrinam ar perskaito paduodama informacija is formos
+    //console.log(test);  
+    let submit = req.body;
+    let obj = JSON.parse(eilutes);
+    //console.log(obj);
+    test.push(obj);
+    test.push(submit);
+        
+    console.log('test', test);
+    
+    let data_JSON = JSON.stringify(test);  //konvertuojam i JSON stringa
+
+    //duomenu irasymas naudojantis filesystem
+      fs.writeFile(target, data_JSON, (err) => {
+        if(err) throw err;
+        //console.log('JSON file succesfully created');
+      });
+    })
+   res.redirect('/');
 });
 
 
 
+//////////////////////////////////////////////////////////////////
 //Duomenu konvertavimas i JSON stringa
 app.post('/simplesubmit', (req, res) => {
   console.log(req.body);  
