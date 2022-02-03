@@ -1,7 +1,7 @@
 console.log("labas");
 
 //API
-//== FETCH skirtas informacijos paemimui arba issiuntimui, 
+//== FETCH skirtas informacijos paemimui arba issiuntimui,
 //== jis krauna info is duotos nuorodos
 
 //== Atsitiktines nuotraukos paemimas is puslpio dog API
@@ -73,9 +73,8 @@ fetch(`https://dog.ceo/api/breed/${veisle}/images/random`)
   });
   */
 
-
 /*
-  UZDUOTIS:
+  UZDUOTIS-1:
   Sukurkite laukeli su pavadinimu "Suns veisle". Salia priskirkite mygtuka su tekstu "Ieskoti". 
   Paspaudus ant mygtuko paimkite is laukelio ivesta reiksme ir ka idekite i sukonstruota nuoroda.
   Jei rezultatas negrazino statuso "success", tuomet narsykleje atvaizduokite zinute 
@@ -83,12 +82,12 @@ fetch(`https://dog.ceo/api/breed/${veisle}/images/random`)
   elementa ( pacia foto naujai sukurtame html elemente <img>). 
 */
 
-
+/*
 //== uzfiksuojamas mygtuko paspaudimas
 document.getElementById("submit").addEventListener("click", () => {
   console.log("Paspaudete mygtuka");
 
-  //== Paimame reikse su suns veisle is input laukelio
+//== Paimame reiksme su suns veisle is input laukelio
   
   const veisle = document.getElementById("veisle").value;
 
@@ -102,16 +101,30 @@ document.getElementById("submit").addEventListener("click", () => {
       if (dataObject.status == "success") {
         document.getElementById("root").innerHTML = `<img src="${dataObject.message}" alt="suns nuotrauka">`;
       } else {
-        document.getElementById("root").innerHTML = `Tokios veisles suns nerasta`;
+        document.getElementById("root").innerText = `Tokios veisles suns nerasta`;
       }
     });
 });
+*/
 
-
-fetch('http://localhost:5500/info')  //kreipiames i savo sukurta serveri
+/*fetch('http://localhost:5500/info')  //kreipiames i savo sukurta serveri
 .then(response => response.json())
 .then((dataObject) => {
     console.log(dataObject);
 }); 
+*/
 
+// UZDUOTIS-2
+// Ivedus varda i adresu juosta, gauti koks tai  vardas- vyriskas ar moteriskas.
+// Atsakyma atvaizduoti narsykleje HTML faile
+// kas vyksta cia galima stebeti 'FETCH/index.html --> open live server'
 
+fetch("http://localhost:3000/jonaso") //kreipiames i savo sukurta serveri
+  .then((response) => {
+    return response.json();   //metodas '.json()' reikalauja, kad butu paduotas turinys json formatu- stringu
+  })
+  .then((dataObject) => {
+    console.log(dataObject);
+
+    document.getElementById("root").innerHTML = dataObject.rezultatas;
+  });
