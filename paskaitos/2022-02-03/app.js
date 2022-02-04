@@ -52,10 +52,10 @@ app.get('/:id', (req, res) => {         // reiksme 'id' bus rasoma narsykles adr
 
 app.get("/:vardas", (req, res) => {
   let name = req.params.vardas;
-  console.log("vardas", req.params.vardas);
+  //console.log("vardas", req.params.vardas);
 
   let objektas = { rezultatas: name }; //toki objekto formata paduoti i 'response.json()' metoda
-  console.log("objektas", objektas);
+  //console.log("objektas", objektas);
 
   if (name === "asta" && (name.slice(-1) === "a" || "e")) {
     objektas.rezultatas = "moteriskas vardas";
