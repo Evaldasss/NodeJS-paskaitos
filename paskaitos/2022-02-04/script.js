@@ -10,7 +10,7 @@ const surname = "Banderas";
 const string = fname.slice(-3).concat(surname.slice(-3));
 //console.log(string);
 
-document.getElementById("task-1").innerText = `1 uzduoties atsakymas : ${fname} ${surname} - ${string}`;
+document.getElementById("task-1").innerHTML = `<span style="text-decoration:underline">1 uzduoties atsakymas :</span> ${fname} ${surname} - ${string}`;
 
 
 
@@ -27,7 +27,12 @@ const regex = /[aeiou]/gi;
 const withoutVowels = sentence.replace(regex, "");
 //console.log(withoutVowels);
 
-document.getElementById("task-2").innerText = `2 uzduoties atsakymas : ${sentence} - ${withoutVowels}`;
+let sentences = ['Breakfast at Tiffany\'s', '2001: A Space Odyssey', 'It\'s a Wonderful Life'];
+
+let sentencesWithoutVowels = sentences.map(el => el.replace(regex, ""));
+//console.log(sentencesWithoutVowels);
+
+document.getElementById("task-2").innerHTML = `<span style="text-decoration:underline">2 uzduoties atsakymas :</span> ${withoutVowels}, ${sentencesWithoutVowels}`;
 
 
 
@@ -54,22 +59,24 @@ function randomNumber(min, max, quantity) {
       let randomNr = Math.floor(Math.random() * (max - min) + min);
       arr.push(randomNr);
     }
+    console.log("1", arr);
     let eilute = arr.toString().replaceAll(",", " ");
     //console.log(eilute);
     let biggerThan150 = arr.filter((el) => el > 150).length;
     //console.log(biggerThan150);
-    let rednumber = arr.filter((el) => el > 275 /*? document.getElementById("task-4").innerText = `4 uzduoties atsakymas:
-    <span style="color: red"> ${el} </span>` : ''*/);                             ///////////////////////////kaip tuos >275 paraudonint?
+    let rednumbers = arr.map((el) => el > 275 ? `<span style="color:red"> ${el} </span>` : el); ///////////////////////////kaip paraudonint tik >275 ?
   
-    document.getElementById("task-4").innerText = `4 uzduoties atsakymas:
-          a) daugiau uz 150 yra: ${biggerThan150} skaiciai;
-          b) <span style="color: red"> ${rednumber} </span>`; 
+    document.getElementById("task-4").innerHTML = `<span style="text-decoration:underline">4 uzduoties atsakymas :</span><br>
+        a) ${eilute} <br>
+        b) daugiau uz 150 yra: ${biggerThan150} skaiciai;<br>
+        c) <span style="color:red"> ${rednumbers} </span>`;
+    console.log("2", arr);
   }
-  let randNum = randomNumber(0, 300, 20);
-  
+  randomNumber(0, 300, 20);
   
 
 
+  
 console.log("---------------------+5");
 /*
 Vienoje eilutėje atspausdinkite visus skaičius nuo 1 iki 3000, kurie dalijasi iš 77 be liekanos. 
@@ -86,7 +93,7 @@ function divideFrom77() {
     let divide77 = arr.filter((el) => el % 77 === 0).toString("");
     //console.log(divide77);
   
-    document.getElementById("task-5").innerText = `5 uzduoties atsakymas : ${divide77}`;
+    document.getElementById("task-5").innerHTML = `<span style="text-decoration:underline">5 uzduoties atsakymas :</span> ${divide77}`;
   }
   divideFrom77();
   
@@ -123,14 +130,14 @@ function game(player1, player2, min1, min2, max1, max2) {
   
 
     if (pl1Points > pl2Points) {
-      document.getElementById("task-6").innerText = `6 uzduoties atsakymas : 
-      Zaidejas: ${player1},  taskai: ${pl1Points}, 
-      Zaidejas: ${player2},  taskai: ${pl2Points}. 
+      document.getElementById("task-6").innerHTML = `<span style="text-decoration:underline">6 uzduoties atsakymas :</span><br>
+      Zaidejas: ${player1},  taskai: ${pl1Points},<br>
+      Zaidejas: ${player2},  taskai: ${pl2Points}.<br>
       Partija laimejo: ${player1}`;
     } else {
-      document.getElementById("task-6").innerText = `6 uzduoties atsakymas : 
-      Zaidejas: ${player1},  taskai: ${pl1Points}, 
-      Zaidejas: ${player2},  taskai: ${pl2Points}.  
+      document.getElementById("task-6").innerHTML = `<span style="text-decoration:underline">6 uzduoties atsakymas :</span><br>
+      Zaidejas: ${player1},  taskai: ${pl1Points},<br>
+      Zaidejas: ${player2},  taskai: ${pl2Points}.<br>  
       Partija laimejo: ${player1}`;
     }
   }
@@ -163,10 +170,10 @@ let letterC = lettersArr.filter(elC => elC === "C").length;
 let letterD = lettersArr.filter(elD => elD === "D").length;
 //console.log(`D raidziu yra ${letterD}`);
 
-document.getElementById("task-7").innerText = `7 uzduoties atsakymas : 
-A raidziu yra: ${letterA},
-B raidziu yra: ${letterB}, 
-C raidziu yra: ${letterC}, 
+document.getElementById("task-7").innerHTML = `<span style="text-decoration:underline">7 uzduoties atsakymas :</span><br> 
+A raidziu yra: ${letterA},<br>
+B raidziu yra: ${letterB},<br>
+C raidziu yra: ${letterC},<br>
 D raidziu yra: ${letterD}` 
 
 
@@ -213,8 +220,8 @@ function random50(min, max, length) {
     let eilute2 = arr2.sort((a, b) => a - b);
     //console.log('sorted arr2', arr2);
   
-    document.getElementById("task-8").innerText = `8 uzduoties atsakymas:
-        a) Pirma eilute: ${eilute1}; 
+    document.getElementById("task-8").innerHTML = `<span style="text-decoration:underline">8 uzduoties atsakymas :</span><br>
+        a) Pirma eilute: ${eilute1}; <br>
         b) Antra eilute: ${eilute2}`;
   }
   random50(1, 200, 50);
@@ -230,24 +237,32 @@ Trečias, pirmo ir antro suma. Ketvirtas - antro ir trečio suma. Penktas treči
 */
 
 function generateArr(min, max, length) {
-  let newArray = [];
-  for (let i = 0; i < 2; i++) {
-    let randomNr = Math.floor(Math.random() * (max - min) + min);
-    newArray.push(randomNr);
-  }
-  //console.log(newArray);
-
-  for (let i = 0; i < length - 2; i++) {
-    let newNum = newArray.reduce((prev, cur) => prev + cur);
-    newArray.push(newNum);
-  }
-  document.getElementById("task-9").innerText = `9 uzduoties atsakymas: [${newArray}]`;
-  //console.log(newArray);
-}
-generateArr(5, 25, 10);
-
+    let newArray = [];
+    for (let i = 0; i < 2; i++) {
+      let randomNr = Math.floor(Math.random() * (max - min) + min);
+      newArray.push(randomNr);
+    }
+    //console.log(newArray);
   
+    let sumOfFirstTwo = newArray[0] + newArray[1];
+    console.log("sum", sumOfFirstTwo);
+    newArray.push(sumOfFirstTwo);
   
+    for (let i = 0; i < 11; i++) {
+      sumOfFirstTwo = sumOfFirstTwo + newArray[i + 1];
+      newArray.push(sumOfFirstTwo);
+    }
+    console.log(newArray);
+  
+    document.getElementById(
+      "task-9"
+    ).innerHTML = `<span style="text-decoration:underline">9 uzduoties atsakymas :</span> [${newArray}]`;
+    //console.log(newArray);
+  }
+  generateArr(5, 25, 10);
+  
+
+ 
   
 
   console.log("----------------!!!!!-10");  ///////////////////// nepadaryta ///////////////////
