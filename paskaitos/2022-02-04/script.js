@@ -254,9 +254,7 @@ function generateArr(min, max, length) {
     }
     console.log(newArray);
   
-    document.getElementById(
-      "task-9"
-    ).innerHTML = `<span style="text-decoration:underline">9 uzduoties atsakymas :</span> [${newArray}]`;
+    document.getElementById("task-9").innerHTML = `<span style="text-decoration:underline">9 uzduoties atsakymas :</span> [${newArray}]`;
     //console.log(newArray);
   }
   generateArr(5, 25, 10);
