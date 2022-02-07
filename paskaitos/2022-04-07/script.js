@@ -167,9 +167,9 @@ function average(param1, param2, param3){
 let averageCount= average(getRandomNumber(0, 100),getRandomNumber(0, 100),getRandomNumber(0, 100));
 */
 
-function vidurkis(min, max) {
+function vidurkis(min, max, quantity) {
   let arr = [];
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < quantity; i++) {
     let randNr = getRandomNumber(min, max);
     arr.push(randNr);
   }
@@ -189,5 +189,5 @@ function vidurkis(min, max) {
   //console.log("averageArray", averageArray)
   return averageArray;
 }
-let average = vidurkis(0, 100);
+let average = vidurkis(0, 100, 3);
 console.log("average", average);
