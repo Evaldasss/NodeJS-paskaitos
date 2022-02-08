@@ -110,7 +110,7 @@ console.log("--------------------7.1var.");
         newArray[i] = 0;
       } else {
       }
-    }s
+    }
     console.log(newArray);
     
 
