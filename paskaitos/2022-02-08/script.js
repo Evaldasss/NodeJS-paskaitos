@@ -18,6 +18,9 @@ o kitas iš porinių;
 7. Pirminio masyvo elementus su poriniais indeksais padarykite lygius 
 0 jeigu jie didesni už 15;
 */
+function getRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max + 1) - 0) + min;
+}
 
 let array = new Array(30).fill(0);
 let newArray = array.map(el => getRandomNumber(5, 10))
@@ -116,3 +119,18 @@ console.log("--------------------7.2var.");
 
 newArray.map((el, i) => (i % 2 === 0 && el > 15) ? el = 0 : el);
 console.log(newArray);
+
+
+
+
+console.log("---------------UZDUOTIS-2");
+
+/*
+1. Sugeneruokite du masyvus, kurių reikšmės yra atsitiktiniai skaičiai 
+nuo 100 iki 999. Masyvų ilgiai 100. Masyvų reikšmės turi būti unikalios 
+savo masyve (t.y. neturi kartotis).
+2. Sugeneruokite masyvą, kuris būtų sudarytas iš reikšmių, kurios yra 
+pirmajame masyve, bet nėra antrame masyve.
+3. Sugeneruokite masyvą iš elementų, kurie kartojasi abiejuose masyvuose.
+4. Sugeneruokite masyvą, kurio indeksus sudarytų pirmojo masyvo reikšmės,
+o jo reikšmės būtų antrojo masyvo.*/
