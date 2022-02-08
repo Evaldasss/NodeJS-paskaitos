@@ -159,7 +159,7 @@ let averageCount= average(getRandomNumber(0, 100),getRandomNumber(0, 100),getRan
 */
 
 console.log("--------------------+3.2var.");
-
+/*
 function vidurkis(min, max, quantity) {
   let arr = [];
   for (let i = 0; i < quantity; i++) {
@@ -184,7 +184,26 @@ function vidurkis(min, max, quantity) {
 }
 let average = vidurkis(0, 100, 3);
 console.log("average", average);
+*/
 
+function vidurkis(min, max, quantity) {
+  let arr = [];
+  for (let i = 0; i < quantity; i++) {
+    let randNr = getRandomNumber(min, max);
+    arr.push(randNr);
+  }
+
+  let wholeArrAverage = Math.round(arr.reduce((acc, cur) => acc + cur) / arr.length);
+  let filt = arr.filter((el) => el > 10 && el < 90);
+  let sum = filt.reduce((acc, curr) => acc + curr);
+  let averageCount = Math.round(sum / filt.length);
+
+  let averageArray = [];
+  averageArray.push(wholeArrAverage, averageCount);
+  return averageArray;
+}
+let average = vidurkis(0, 100, 3);
+console.log("average", average);
 
 
 
@@ -301,7 +320,9 @@ console.log("--------------------7.1var.");
     }
     console.log(newArray);
     
+
+
 console.log("--------------------7.2var.");
 
-    newArray.map((el, i) => (i % 2 === 0 && el > 15) ? el = 0 : el);
-    console.log(newArray);
+newArray.map((el, i) => (i % 2 === 0 && el > 15) ? el = 0 : el);
+console.log(newArray);
