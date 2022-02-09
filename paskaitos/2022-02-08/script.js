@@ -81,10 +81,12 @@ console.log("------------5------------");
 /*5. Papildykite masyvą papildomais 10 elementų su reikšmėmis nuo 5 iki 25,
 kad bendras masyvas padidėtų iki indekso 39; */
 
+let newArrayCopy = [...newArray]; //pasidarau pirminio masyvo kopija, 
+                                  //kad konsolej nesikeistu pirminis masyvo atvaizdavimas
 for (let i = 0; i < 10; i++) {
-  newArray.push(getRandomNumber(5, 25));
+  newArrayCopy.push(getRandomNumber(5, 25));
 }
-console.log(newArray);
+console.log(newArrayCopy);
 
 
 
@@ -199,30 +201,3 @@ console.log(array5);
 console.log("max", Math.max(...array1));
 
 
-
-
-console.log("---------------UZDUOTIS-3");
-
-/*Sugeneruokite 101 elemento masyvą su atsitiktiniais skaičiais nuo 
-0 iki 300. */
-
-let construct = new Array(101).fill(0);
-let masyvas = construct.map((el) => getRandomNumber(0, 300));
-console.log(masyvas);
-
-
-
-console.log("------------1------------");
-/*/*1. Reikšmes kurios tame masyve yra ne unikalios pergeneruokite 
-iš naujo taip, kad visos reikšmės masyve būtų unikalios. */
-
-console.log("------------2------------");
-/*2. Išrūšiuokite masyvą taip, kad jo didžiausia reikšmė būtų masyvo 
-viduryje, o einant nuo jos link masyvo pradžios ir pabaigos 
-reikšmės mažėtų. */
-
-console.log("------------3------------");
-/*3. Paskaičiuokite pirmos ir antros masyvo dalies sumas (neskaičiuojant 
-vidurinės). Jeigu sumų skirtumas (modulis, absoliutus dydis) yra 
-didesnis nei | 30 | rūšiavimą kartokite. (Kad sumos nesiskirtų viena 
-nuo kitos daugiau nei per 30)*/
