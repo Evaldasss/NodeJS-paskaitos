@@ -187,7 +187,7 @@ function generateHeadings() {
   let stringas = btoa(Date.now())
   let stringasReplaced = '';
   stringas.replace(/[A-Z]+/g, function(param) {
-      stringasReplaced += `<h1>${param}</h1>`
+      stringasReplaced += `<h1>${param}</h1> `
   })
 
   console.log("stringasReplaced", stringasReplaced)
