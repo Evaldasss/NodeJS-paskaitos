@@ -13,12 +13,14 @@ h1 {
   margin-bottom: 60px;
 }
 .photo {
+  /* position: absolute; */
   border-radius: 100%;
   margin-left: 0.8rem;
   width: 100px;
 }
 
 #card {
+  position: absolute;
   display: flex;
   flex-direction: column;
   width: 40em;
@@ -44,6 +46,7 @@ h1 {
 }
 #qr {
   width: 250px;
+  height: 250px;
 }
 
 #footer {
@@ -51,7 +54,7 @@ h1 {
   flex-direction: column;
   justify-content: left;
   font-size: 20px;
-  padding-left: 1.5em;
+  padding-left: 1em;
 }
 #header {
   margin-left: 2em;
