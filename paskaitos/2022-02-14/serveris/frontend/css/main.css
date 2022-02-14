@@ -68,15 +68,19 @@ h1 {
   flex-direction: column;
   align-self: center;
   padding: 0rem 0rem;
+  line-height: 18px;
 }
 .feeling,
 .humidity {
   font-size: 18px;
   font-weight: bold;
+  margin: 0.001px;
+  padding-right: 1rem;
 }
 /* .line {
   border-left: 1px solid rgb(107, 105, 105);
 } */
 .add-info {
   font-size: 12px;
+  margin: 0px;
 }
