@@ -31,6 +31,7 @@ Papildomai:
 Sukurkite "Infinite scroll" arba "Infinite load" funkcionalumą.
 */
 let page = 1;
+let notLoading = {loading: true};
 //let limit = 10;   //kraunant kitus psl uzkrautu kitoki img kieki, pgl kintamaji 'limit'
 
 const imageLoader = () => {
@@ -39,10 +40,11 @@ const imageLoader = () => {
   fetch("https://picsum.photos/v2/list?page="+page+"&limit=10")
     .then((response) => response.json())
     .then((jsonObjektas) => {
-      console.log(jsonObjektas);
+      //console.log(jsonObjektas);
       jsonObjektas.forEach((el, i) => {
         document.querySelector(".grid").innerHTML += `<div class="item"><img class="photo" src="${el.download_url}" alt="picture"/></div>`;
       });
+      notLoading.loading = false;
     });
 };
 imageLoader();
@@ -54,16 +56,20 @@ document.querySelector(".load-more").addEventListener("click", () => {
   imageLoader();
 });
 
-/*
+
 window.addEventListener("scroll", () => {
-    console.log("window.scrollY", window.scrollY);
+    //console.log("window.scrollY", window.scrollY);
   // let scroll = window.scrollY;
     //document.querySelector(".load-more").textContent=scroll;
-    if(window.scrollY < 34){
-        page++;
-        imageLoader();
+  
+    let btnPos = document.querySelector('.button-holder').offsetTop;
+    
+    if(window.scrollY >= btnPos && !notLoading.loading){
+         page++;
+         imageLoader();
+         
     }
     
 
 })
-console.log(window);*/
+//console.log(window);

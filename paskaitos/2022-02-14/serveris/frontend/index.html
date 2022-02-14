@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/main.css" />
+    <title>Backend prijungimas</title>
+  </head>
+  <body>
+    <h1>Weather forecast</h1>
+    <div class="button-holder">
+      <button class="get-weather">Get weather forecast</button>
+    </div>
+    <div class="card">
+      <div class="top">
+        <div class="img"></div>
+        <div class="degrees"></div>
+        <div class="status"></div>
+      </div>
+
+      <div class="bottom">
+        <div class="bottom-boxes">
+          <img class="icon" src="/img/thermo.jpg" alt="drop" />
+          <div class="tex-info">
+            <div class="feeling"></div>
+            <div class="add-info">Feels like</div>
+          </div>
+        </div>
+
+        <div class="bottom-boxes line">
+          <img class="icon" src="/img/gtt.jpg" alt="drop" />
+          <div class="tex-info">
+            <div class="humidity"></div>
+            <div class="add-info">Humidity</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="/app.js"></script>
+  </body>
+</html>
