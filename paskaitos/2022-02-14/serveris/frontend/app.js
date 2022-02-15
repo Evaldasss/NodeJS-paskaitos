@@ -5,12 +5,12 @@ const getWeather = () => {
     .then((response) => response.json()) //json formato responsa konvertuoja i js objekta
     //console.log(response.json());       //zr. rezultata narsykles konsolej
     .then((jsonObjektas) => {
-      //console.log(jsonObjektas.status.sun.stat);
+      //console.log(jsonObjektas.status.sun.img);
       if (jsonObjektas.degree > 17) {
-        document.querySelector(".img").innerHTML = `<img class="sun-cloud" alt="sun-cloud" ${jsonObjektas.status.sun.img}>`;
+        document.querySelector(".img").innerHTML = `<img class="sun-cloud" alt="sun" src="${jsonObjektas.status.sun.img}">`;
         document.querySelector(".status").innerHTML = jsonObjektas.status.sun.stat;
       } else {
-        document.querySelector(".img").innerHTML = `<img class="sun-cloud" alt="sun-cloud" ${jsonObjektas.status.clouds.img}>`;
+        document.querySelector(".img").innerHTML = `<img class="sun-cloud" alt="cloud" src="${jsonObjektas.status.clouds.img}">`;
         document.querySelector(".status").innerHTML = jsonObjektas.status.clouds.stat;
       }
 

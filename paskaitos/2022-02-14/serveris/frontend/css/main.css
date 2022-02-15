@@ -21,13 +21,16 @@ h1 {
   border: none;
   padding: 0.5rem;
 }
+.get-weather:hover {
+  background-color: rgb(208, 210, 211);
+  }
 .card {
   display: flex;
   flex-direction: column;
   width: 50vw;
   transform: translate(50%, 10%);
   background-color: #fff;
-  border-radius: 0 0 15px 15px;
+  border-radius: 0 0 7px 7px;
   font-family: "Poppins", sans-serif;
 }
 .top {
@@ -62,6 +65,8 @@ h1 {
   padding: 0.5rem;
 }
 .icon {
+  width: 100%;
+  height: 90%;
 }
 .tex-info {
   display: flex;
@@ -72,9 +77,9 @@ h1 {
 }
 .feeling,
 .humidity {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
-  margin: 0.001px;
+  margin: 0px;
   padding-right: 1rem;
 }
 /* .line {
