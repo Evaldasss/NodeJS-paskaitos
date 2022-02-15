@@ -6,6 +6,7 @@ import cors from "cors";
 const app = express();
 
 app.use(cors());
+app.use('/img', express.static('img'));
 
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
@@ -16,11 +17,11 @@ app.get("/", function (req, res) {
     status: {
       clouds: {
         stat: "Broken Clouds",
-        img: "./img/broken-clouds.jpg",
+        img: "http://localhost:3001/img/broken-clouds.jpg",
       },
       sun: {
         stat: "Mostly Sunny",
-        img: "./img/sunny.jpg",
+        img: "http://localhost:3001/img/sunny.jpg",
       },
     },
     degree: getRandomNumber(10, 25),

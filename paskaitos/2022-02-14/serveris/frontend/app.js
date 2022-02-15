@@ -8,11 +8,13 @@ const getWeather = () => {
       //console.log(jsonObjektas.status.sun.img);
       if (jsonObjektas.degree > 17) {
         document.querySelector(".img").innerHTML = `<img class="sun-cloud" alt="sun" src="${jsonObjektas.status.sun.img}">`;
+        //document.querySelector(".img").innerHTML = `<img class="sun-cloud" alt="sun" src="../img/sunny.jpg">`;  // img is frontendo
         document.querySelector(".status").innerHTML = jsonObjektas.status.sun.stat;
       } else {
         document.querySelector(".img").innerHTML = `<img class="sun-cloud" alt="cloud" src="${jsonObjektas.status.clouds.img}">`;
+        //document.querySelector(".img").innerHTML = `<img class="sun-cloud" alt="cloud" src="../img/broken-clouds.jpg">`;  // img is frontendo
         document.querySelector(".status").innerHTML = jsonObjektas.status.clouds.stat;
-      }
+        }
 
       document.querySelector(".degrees").innerHTML = `${jsonObjektas.degree}° C`;
       document.querySelector(".feeling").innerHTML = `${jsonObjektas.feeling}°C`;

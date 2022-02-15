@@ -23,7 +23,7 @@ h1 {
 }
 .get-weather:hover {
   background-color: rgb(208, 210, 211);
-  }
+}
 .card {
   display: flex;
   flex-direction: column;
@@ -33,6 +33,13 @@ h1 {
   border-radius: 0 0 7px 7px;
   font-family: "Poppins", sans-serif;
 }
+/* @media (min-width: 800px) {
+    .card {
+      
+      justify-content: center;
+      width: 30vw;
+  }
+} */
 .top {
   border-bottom: 1px solid rgb(107, 105, 105);
   display: flex;
@@ -41,18 +48,25 @@ h1 {
   padding: 1rem;
 }
 .img {
-  padding: 0.5rem 0rem;
+  padding: 1.5rem 0rem 0.5rem 0rem;
 }
 .degrees {
   font-size: 70px;
   font-weight: bold;
-  padding: 0.5rem 0rem;
+  padding: 0rem;
 }
 .status {
   font-size: 24px;
   padding-bottom: 4rem;
 }
-
+.box-holder {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+.box-holder:first-child {
+  border-right: 1px solid rgb(107, 105, 105);
+}
 .bottom,
 .bottom-boxes {
   padding: 1rem;
@@ -82,9 +96,7 @@ h1 {
   margin: 0px;
   padding-right: 1rem;
 }
-/* .line {
-  border-left: 1px solid rgb(107, 105, 105);
-} */
+
 .add-info {
   font-size: 12px;
   margin: 0px;
