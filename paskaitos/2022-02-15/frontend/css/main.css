@@ -1,0 +1,130 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  /* background-color: green; */
+  background-image: url("/img/BG.webp");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  font-weight: bold;
+}
+ .red:before {
+ content: '';
+ position: absolute;
+ top: 0; 
+ left: 0; 
+ border-bottom: 100vh solid transparent;
+ border-left: 150px solid #D1061F;
+ width: 0;
+} 
+.blue:after {
+  content: '';
+  position: absolute;
+  top: 0; 
+ right: 0; 
+  border-top: 100vh solid transparent;
+  border-right: 150px solid #002D74;
+  width: 0;
+ } 
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+}
+.top-line {
+  display: flex;
+  width: 40vw;
+  padding: 0.3rem;
+  background-color: hsl(0, 100%, 0%, 0.4);
+  border-radius: 5px;
+}
+.list-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 15px;
+  width: 40vw;
+  font-size: 15px;
+  color: white;
+}
+li {
+  display: flex;
+  justify-self: center;
+  padding: 0rem, 2rem;
+  font-family: "Mulish", sans-serif;
+  font-weight: 400;
+}
+.bottom {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  margin-top: 8rem;
+}
+.logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
+  align-content: center;
+  width: 30%;
+  text-align: center;
+  margin: 0rem 3rem;
+  margin-top: 2rem;
+}
+.team-name {
+  font-family: "Mulish", sans-serif;
+  padding: 0.5rem;
+  font-size: 36px;
+}
+.center-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.scores {
+  display: flex;
+  flex-direction: row;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: black;
+  font-family: "Teko", sans-serif;
+}
+
+.team-scores {
+  padding: 0rem 2rem;
+  font-size: 120px;
+  font-weight: bold;
+}
+.team-scores:first-child {
+    border-right: 1px solid grey;
+  }
+.match-stage {
+  background-color: white;
+  padding: 0.5rem;
+  color: black;
+  font-family: "Mulish", sans-serif;
+}
+.button-holder {
+  border-radius: 50px;
+  border: 1px solid white;
+  margin-top: 10rem;
+}
+.button{
+  font-family: "Mulish", sans-serif;
+  background-color: transparent;
+  color: white;
+  border-radius: 50px;
+  padding: 0.6rem 1.5rem;
+
+}
