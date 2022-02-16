@@ -70,6 +70,7 @@ document.querySelector(".button").addEventListener("click", () => {
 });
 */
 
+
 // rezultatas pagal klase 'Krepsinis'
 const play = () => {
     fetch("http://localhost:3001/checkscore")
@@ -88,8 +89,7 @@ const play = () => {
         if(jsonObjektas.komanda1 === jsonObjektas.komanda2) {
             document.querySelector(".f-scores").style.color = "#fff";
             document.querySelector(".s-scores").style.color = "#fff";
-        }
-        else if (jsonObjektas.komanda1 > jsonObjektas.komanda2) {
+        } else if (jsonObjektas.komanda1 > jsonObjektas.komanda2) {
           document.querySelector(".f-scores").style.color = "#00F2A7";
         } else {
           document.querySelector(".s-scores").style.color = "#00F2A7";
@@ -105,16 +105,17 @@ const play = () => {
           document.querySelector(".match-stage").innerHTML = `${jsonObjektas.kelinys}th quarter`;
          }
         //console.log(jsonObjektas.quarter);
-        
       });
   
     //console.log('test Zodis')
     setTimeout(() => {
       play();
     }, 60000);
+
   };
   play();
   
+
   document.querySelector(".button").addEventListener("click", () => {
     //console.log('clicked')  //spaudziam mygtuka narsyklej ir patikrinam konsolej, ar pajungtas eventListener
     play();

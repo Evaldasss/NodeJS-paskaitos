@@ -9,9 +9,11 @@ const app = express();
 app.use(cors());
 app.use("/img", express.static("img"));
 
+
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
+
 
 function date() {
   const date = new Date();
@@ -25,8 +27,8 @@ function date() {
   return data;
 }
 
-//sita funkcija rodo einamaji laika, jei ji priskirtume prie  let objektas1 = {time: showTime()}
 
+//sita funkcija rodo einamaji laika, jei ji priskirtume prie  let objektas1 = {time: showTime()}
 function showTime() {
   const date = new Date();
   const hours = date.getHours();
@@ -41,6 +43,8 @@ function showTime() {
 
   return time;
 }
+
+
 
 app.get("/", function (req, res) {
   let objektas1 = {
@@ -65,6 +69,8 @@ app.get("/", function (req, res) {
   res.json(objektas1);
 });
 
+
+
 //dinaminis variantas, rezultatas random, ne didejantis
 
 app.get("/result", function (req, res) {
@@ -82,12 +88,16 @@ app.get("/result", function (req, res) {
 
 
 // rezultatas pagal klase 'Krepsinis'
-//konstanta skirta klases inicijavimui ir //////
+/*konstanta skirta klases inicijavimui ir pavertimui objektu 
+(aprasoma virs route'o, nes jei aprasysim route, tai vis nuo nulio 
+taskus rodys ir nedides taskai)*/
 const rezultatas = new Krepsinis();
 //console.log(rezultatas);
 
 app.get("/checkscore", function (req, res) {
   res.json(rezultatas);
 });
+
+
 
 app.listen(3001);
