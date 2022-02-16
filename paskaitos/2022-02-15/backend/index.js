@@ -2,6 +2,7 @@
 
 import express from "express";
 import cors from "cors";
+import Krepsinis from "./krepsinis.js";
 
 const app = express();
 
@@ -9,7 +10,7 @@ app.use(cors());
 app.use("/img", express.static("img"));
 
 function getRandomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min) + min);
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 function date() {
@@ -24,22 +25,22 @@ function date() {
   return data;
 }
 
+//sita funkcija rodo einamaji laika, jei ji priskirtume prie  let objektas1 = {time: showTime()}
+
 function showTime() {
   const date = new Date();
   const hours = date.getHours();
   const minutes = date.getMinutes();
-  const seconds = date.getSeconds();
+  //const seconds = date.getSeconds();
 
   const adjustedHours = hours < 10 ? "0" + hours : hours;
   const adjustedMinutes = minutes < 10 ? "0" + minutes : minutes;
-  const adjustedSeconds = seconds < 10 ? "0" + seconds : seconds;
-  const time = adjustedHours + ":" + adjustedMinutes + ":" + adjustedSeconds;
+  //const adjustedSeconds = seconds < 10 ? "0" + seconds : seconds;
+  //const time = adjustedHours + ":" + adjustedMinutes + ":" + adjustedSeconds;
+  const time = adjustedHours + ":" + adjustedMinutes;
+
   return time;
 }
-
-setInterval(function () {
-  return showTime();
-}, 1000);
 
 app.get("/", function (req, res) {
   let objektas1 = {
@@ -52,11 +53,11 @@ app.get("/", function (req, res) {
       second: "Anadolu Efes Istanbul",
     },
     result: {
-      first: "0",
-      second: "0",
+      first: 0,
+      second: 0,
     },
     quarter: {
-      number: "0",
+      number: "1st quarter",
       final: "final",
     },
   };
@@ -64,18 +65,29 @@ app.get("/", function (req, res) {
   res.json(objektas1);
 });
 
-app.get("/", function (req, res) {
+//dinaminis variantas, rezultatas random, ne didejantis
+
+app.get("/result", function (req, res) {
   let objektas2 = {
-    result: getRandomNumber(1, 3),
-    quarter: {
-      first: "1",
-      second: "2",
-      third: "3",
-      fourth: "4",
+    result: {
+      first: getRandomNumber(1, 100),      
+      second: getRandomNumber(1, 100),
     },
+    quarter: getRandomNumber(1, 5),
+    time: showTime(),
   };
 
   res.json(objektas2);
+});
+
+
+// rezultatas pagal klase 'Krepsinis'
+//konstanta skirta klases inicijavimui ir //////
+const rezultatas = new Krepsinis();
+//console.log(rezultatas);
+
+app.get("/checkscore", function (req, res) {
+  res.json(rezultatas);
 });
 
 app.listen(3001);
