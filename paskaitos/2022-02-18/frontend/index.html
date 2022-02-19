@@ -32,9 +32,8 @@
   ir sutikrinkite ją. Leiskite priskirti duomenis į dizainą tik tokiu atveju, 
   jei įvestas laikas yra tarp 18:00 ir 21:30. Priešingu atveju išveskite žinutę: 
   "Netinkamas mačo laikas".-->
-  <div class="red"></div>
+    <div class="red"></div>
     <div class="content">
-      
       <div class="top-line">
         <ul class="list-line">
           <li class="round"></li>
@@ -45,9 +44,9 @@
       </div>
 
       <div class="bottom">
-        <div class="team one">
+        <div class="team">
           <div class="team-logo">
-            <img class="logo" src="./img/Olympiacos.png" alt="logo" />
+            <img class="logo one" src="./img/Olympiacos.png" alt="logo" />
           </div>
           <div class="team-name first"></div>
         </div>
@@ -66,9 +65,9 @@
           </div>
         </div>
 
-        <div class="team two">
+        <div class="team">
           <div class="team-logo">
-            <img class="logo" src="./img/Istanbul.png" alt="logo" />
+            <img class="logo two" src="./img/Istanbul.png" alt="logo" />
           </div>
           <div class="team-name second"></div>
         </div>
@@ -76,7 +75,6 @@
     </div>
 
     <div class="forma">
-     
       <form
         method="POST"
         action="/post-request"
@@ -84,15 +82,15 @@
         id="naujas-macas"
       >
         <label>Round</label>
-        <br>
+        <br />
         <input type="number" placeholder="Type here..." name="round" />
         <br />
         <label>Date</label>
-        <br>
+        <br />
         <input type="date" placeholder="Type here..." name="date" />
         <br />
         <label>Location</label>
-        <br>
+        <br />
         <select name="location">
           <option value="Peace And Friendship Stadium">
             Peace And Friendship Stadium
@@ -102,29 +100,26 @@
         </select>
         <br />
         <label>Time</label>
-        <br>
+        <br />
         <input type="time" placeholder="Type here..." name="time" />
         <br />
         <label>Team-1</label>
-        <br>
+        <br />
         <select name="team-1">
           <option value="Olympiacos Piraeus">Olympiacos Piraeus</option>
           <option value="Anadolu Efes Istanbul">Anadolu Efes Istanbul</option>
-          <option value="Žalgiris">Žalgiris</option>
         </select>
         <br />
         <label>Team-2</label>
-        <br>
+        <br />
         <select name="team-2">
           <option value="Olympiacos Piraeus">Olympiacos Piraeus</option>
           <option value="Anadolu Efes Istanbul">Anadolu Efes Istanbul</option>
-          <option value="Žalgiris">Žalgiris</option>
         </select>
         <br />
 
         <button id="run-match" class="btn button" type="submit">Search</button>
       </form>
-    
     </div>
     <div class="blue"></div>
     <script type="text/javascript" src="/app.js"></script>

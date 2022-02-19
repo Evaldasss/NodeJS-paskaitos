@@ -67,5 +67,12 @@ document.querySelector("#run-match").addEventListener("click", (event) => {
       document.querySelector(".one").style.display = "block";
       document.querySelector(".two").style.display = "block";
       document.querySelector(".match-stage").style.display = "block";
+
+    /*  if(team1 !== 'Olympiacos Piraeus') {
+        document.querySelector(".one").innerHTML = `<img src="../img/Istanbul.png" alt="logo">`;
+      }
+      if(team2 !== 'Anadolu Efes Istanbul') {
+        document.querySelector(".two").innerHTML = `<img src="../img/Olympiacos.png" alt="logo">`;
+      } */
     });
 });
