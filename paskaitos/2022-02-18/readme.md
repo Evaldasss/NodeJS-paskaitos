@@ -8,7 +8,7 @@ It has two main parts:
 1. Backend server- it serves API of a game.
 2. Frontend website- that renders backend data.
 
-![](../img/Task.png)
+![](img/Task.png)
 
 
 # FRONTEND
