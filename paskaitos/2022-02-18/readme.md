@@ -1,30 +1,41 @@
+# Baskeball match simulator
+
+This simulator show the simple basketball game website monitoring.
+
+The goal was to learn more about NodeJs, backend + frontend and connect it together by API.
+
+It has two main parts:
+1. Backend server- it serves API of a game.
+2. Frontend website- that renders backend data.
+
+![](img/Task.png)
+
+
 # FRONTEND
 
-Failo paleidimas:
+Run file:
 
-1) esamoj direktorijoj atsidaryti terminala ir konsoleje rasyti 
-
+- in current directory open new terminal and write in console
+ 
  > npm i -D dead-server
-
-2) konsoleje paleisti komanda:
 
  > npm run dev
 
-
+This will start live server at port 3000 where browser renders basketball game website.
 
 
  # BACKEND
 
- Failo paleidimas:
+It runs on it's own server at `http://localhost:3001`
 
-1) esamoj direktorijoj atsidaryti terminala ir konsoleje rasyti 
+ Run file:
+
+- in current directory open new terminal and write in console
 
  > npm i express
 
  > npm i --save-dev nodemon
 
  > npm i cors
-
-2) konsoleje paleisti komanda:
 
  > npm run start
