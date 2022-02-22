@@ -18,11 +18,19 @@ Dinaminių duomenų iš backend'o paėmimas dinaminiu būdu ir atvaizdavimas nar
 
 ## 2022-02-18
 #### Krepšinio varžybos:
-Formos kūrimas, duomenų iš formos perdavimas ir atvaizdavimas tiesiogiai į naršyklę.
+1. Formos kūrimas, duomenų iš formos perdavimas ir atvaizdavimas tiesiogiai į naršyklę.
+
+2. Sukurkite formą frontend srityje su šiais laukeliais:
+Roundas, Data, Lokacija, Laikas, Komanda1, Komanda2.
+Javascript pagalba paimkite laukelių informaciją ir įstatykite jų reikšmes į dizaino maketą.
+Po duomenų supildymo visų laukelių reikšmes padarykite tuščias.
+
 
 ## 2022-02-21
 #### Krepšinio varžybos:
-Duomenų iš formos išsaugojimas '.json' formatu.
+1. Sukurkite POST routerį backend platformoje. Į routerį perduokite laiko reikšmę ir sutikrinkite ją. Leiskite priskirti duomenis į dizainą tik tokiu atveju, jei įvestas laikas yra tarp 18:00 ir 21:30. Priešingu atveju išveskite žinutę: "Netinkamas mačo laikas".
+
+2. Duomenų iš formos išsaugojimas '.json' formatu.
 
 ## 2022-02-22
 #### Krepšinio varžybos:
