@@ -123,7 +123,6 @@ document.querySelector(".button").addEventListener("click", () => {
 
 
 
-
 document.querySelector(".renew").style.display = "none";
 document.querySelector(".one").style.display = "none";
 document.querySelector(".two").style.display = "none";
@@ -145,7 +144,6 @@ document.querySelector(".start-match").addEventListener("click", () => {
   document.querySelector('#naujas-macas select[name="team-1"]').value = "";
   document.querySelector('#naujas-macas select[name="team-2"]').value = "";
   document.querySelector(".renew").innerHTML = "";
-
   document.querySelector(".round").innerText = "";
   document.querySelector(".date").innerHTML = "";
   document.querySelector(".stadium").innerHTML = "";
@@ -157,9 +155,9 @@ document.querySelector("#run-match").addEventListener("click", (event) => {
   if (document.querySelector("#naujas-macas").style.display === "block") {
     document.querySelector("#naujas-macas").style.display = "none";
   }
-  event.preventDefault();
+  event.preventDefault();  //skirtas sustabdyti standartini HTML elementu veikima
 
-  let round = document.querySelector('#naujas-macas input[name="round"]').value;
+  let round = document.querySelector('#naujas-macas input[name="round"]').value;  //paimama ivesta i input reiksme
   document.querySelector('#naujas-macas input[name="round"]').value = "";  //padarom tuscias reiksmes, kad paspaudus mygtuka "SEARCH" visos input reiksmes "nusinulintu'
   let date = document.querySelector('#naujas-macas input[name="date"]').value;
   document.querySelector('#naujas-macas input[name="date"]').value = "";
@@ -172,27 +170,35 @@ document.querySelector("#run-match").addEventListener("click", (event) => {
   let team2 = document.querySelector('#naujas-macas select[name="team-2"]').value;
   document.querySelector('#naujas-macas select[name="team-2"]').value = "";
 
-/*
-if(team1 === 'Olympiacos Piraeus'){
-  document.querySelector(".one").innerHTML = `<img class="logo one" src="${jsonObjektas.obj.logo.flogo}" alt="logo">`;
-} else {
-  document.querySelector(".two").innerHTML = `<img class="logo two" src="${jsonObjektas.obj.logo.slogo}" alt="logo">`;
-}
-*/
+
   fetch("http://localhost:3001/post-request", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ round, date, loc, time, team1, team2 }),
+    body: JSON.stringify({ time }),
   })
     .then((resp) => resp.json())
     .then((resp) => {
-     console.log("resp", resp);
-      document.querySelector(".round").innerText = `Round ${resp.round}`;
-      document.querySelector(".date").innerHTML = resp.date;
-      document.querySelector(".stadium").innerHTML = resp.loc;
+      console.log("resp", resp);
+      console.log("team1", team1);
+      document.querySelector(".round").innerText = `Round ${round}`;
+      document.querySelector(".date").innerHTML = date;
+      document.querySelector(".stadium").innerHTML = loc;
       document.querySelector(".time").innerHTML = resp.time;
-      document.querySelector(".first").innerHTML = resp.team1;
-      document.querySelector(".second").innerHTML = resp.team2;
+
+      if (team1 === team1 || team2 === team2) {
+
+      } else if (team1 === "Olympiacos Piraeus") {
+        document.querySelector(".one").innerHTML = `<img class="logo" src="${resp.obj.logo.flogo}" alt="logo">`;
+        document.querySelector(".two").innerHTML = `<img class="logo" src="${resp.obj.logo.slogo}" alt="logo">`;
+      } else {
+        document.querySelector(".two").innerHTML = `<img class="logo" src="${resp.obj.logo.flogo}" alt="logo">`;
+        document.querySelector(".one").innerHTML = `<img class="logo" src="${resp.obj.logo.slogo}" alt="logo">`;
+      }
+
+      document.querySelector(".first").innerHTML = team1;
+      document.querySelector(".second").innerHTML = team2;
+
+      //document.querySelector("body").innerText = resp.message;
 
       document.querySelector(".bottom").style.display = "flex";
       document.querySelector(".renew").style.display = "none";
@@ -200,7 +206,7 @@ if(team1 === 'Olympiacos Piraeus'){
       document.querySelector(".two").style.display = "block";
       document.querySelector(".match-stage").style.display = "block";
       document.querySelector(".scores").style.display = "flex";
-
     });
-
 });
+
+

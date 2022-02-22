@@ -121,11 +121,20 @@ app.get("/checkscore", function (req, res) {
 
 
 
-app.post('/post-request', (req, res) => {
+app.post("/post-request", (req, res) => {
  // let data = JSON.parse(req.body)  //uzkomentuota, nes apsirasem 'app.use(express.json())'
-  console.log(req.body);
-  
-  res.json(req.body)
+  console.log("body", req.body);
+  const message = {};
+
+  if(req.body.time >= "18:00" && req.body.time <= "21:30"){
+    console.log("laikas tinkamas");
+    res.json(req.body)
+  } else {
+    console.log("Netinkamas rungtyniu laikas");
+    message = "Netinkamas rungtyniu laikas";
+    res.json(message)
+  }
+
 })
 
 app.listen(3001)

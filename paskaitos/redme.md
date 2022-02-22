@@ -1,6 +1,10 @@
 # Paskaitų turinys
 
 
+## 2022-02-14
+#### Weather card:
+Statinių duomenų iš backend'o paėmimas dinaminiu būdu ir atvaizdavimas naršyklėje
+
 ## 2022-02-15
 #### Krepšinio varžybos:
 Statinių duomenų iš backend'o paėmimas dinaminiu būdu ir atvaizdavimas naršyklėje
