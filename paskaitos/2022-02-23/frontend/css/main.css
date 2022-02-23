@@ -212,28 +212,19 @@ li {
   border: black;
   margin: 2rem auto;
   padding: 1rem;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 .show-matches {
   background-color: red;
-  width: 10rem;
+  width: 15rem;
+ font-size: 1rem; ;
+ border: 2px solid black;
+ transform: scale(1.01);
 }
-/* 
-<div class="list-table">
-  <div class="teams"></div>
-  <div class="date-time"></div>
-  <div class="round-nr"></div>
-  <button class="edit"></button>
-  <button class="delete"></button>
-</div> 
-*/
-.list-table {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
- 
+.show-matches:hover {
+transform: scale(1);
 }
+
 .edit, .delete {
   width: 6rem;
  margin-left: 1rem;
@@ -245,5 +236,22 @@ background-color: black;
 }
 .delete{
   background-color: red;
+
+}
+.search-result-list{
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+}
+h3{
+ margin: 2rem 0;
+}
+.row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 60vw;
+  margin: 0.5rem 0;
 
 }

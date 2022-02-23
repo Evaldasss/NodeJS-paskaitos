@@ -89,11 +89,9 @@ app.post("/save-request", (req, res) => {
 
 /*
 /////////////////////////////////////////////////
-
 app.post("/save-request", (req, res) => {
   // let data = JSON.parse(req.body)
   let masyvas = [];  //sukuriamas tuscias masyvas, i kuri bus pridedama naujai issaugoma informacija
-
   fs.access(filePath, (err) => {   //tikrinama ar suskurtas duomenu saugojimo failas
     if (err) {                     //jei failo nera, ty ismetamas 'error'
       masyvas.push(req.body);      //i tuscia masyva sukelti req.body, kuri paimam is 'FETCH ('.../save-request') "body"
@@ -112,7 +110,6 @@ app.post("/save-request", (req, res) => {
         }
         let json = JSON.parse(data);    //sukuriamas kintamasis, kuriam priskiriami faile esantys duomenys(data), ty issifruotas i objekta .json stringas 
         json.push(req.body);            //i ta objekta, kuri konvertavome is .json stringo, sukeliame(push) naujus gautus duomenis is FETCH "body", ty inputo info
-
         fs.writeFile(filePath, JSON.stringify(json), "utf8", (err) => {  //faile irasomas naujas turinys(data)- i objekta paverstas .json stringas
           if (!err) {
             res.json({ message: "Informacija issaugota" });
