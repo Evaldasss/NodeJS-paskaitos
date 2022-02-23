@@ -198,7 +198,7 @@ document.querySelector(".new-match").addEventListener("click", () => {
       .then((resp) => {
         console.log(resp);
         if (resp.result) {
-          document.querySelector(".list-table").innerHTML = resp.message;
+          document.querySelector(".not-found").innerHTML = resp.message;
         } else {
           document.querySelector(".date-time").innerHTML = resp.info.newDate;
         }
