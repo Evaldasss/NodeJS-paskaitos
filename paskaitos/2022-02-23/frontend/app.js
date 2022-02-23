@@ -88,6 +88,8 @@ document.querySelector(".new-match").addEventListener("click", () => {
   document.querySelector(".bottom").style.display = "none";
 });
 
+
+/*///////
 ///////////////////////////////////////////////////
 document.querySelector("#search").addEventListener("click", (event) => {
   if (document.querySelector("#search-form").style.display === "block") {
@@ -165,6 +167,7 @@ document.querySelector("#search").addEventListener("click", (event) => {
       }
     });
 });
+*///////
 
 /*
 ///////////////////////////////////////////////////
@@ -191,30 +194,27 @@ document.querySelector("#save-data").addEventListener("click", (event) => {
 });
 */
 
+///////////////////bandau paimti visas input reiksmes is dideles formos////////////////////////////////
 
-
-  ///////////////////bandau paimti visas input reiksmes is dideles formos////////////////////////////////
-  
-  document.querySelector("#search").addEventListener("click", (event) => {
-    event.preventDefault();
-     let round = document.querySelector('#search-form input[name="round"]').value;
-     let date = document.querySelector('#search-form input[name="date"]').value;
-     let loc = document.querySelector('#search-form select[name="location"]').value;
-     let time = document.querySelector('#search-form input[name="time"]').value;
-     let team1 = document.querySelector('#search-form select[name="team-1"]').value;
-     let team2 = document.querySelector('#search-form select[name="team-2"]').value;
-  console.log(round)
-    fetch("http://localhost:3001/save-request", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-       body: JSON.stringify({ round, date, loc, time, team1, team2 }),
-    })
-      .then((resp) => resp.json())
-      .then((resp) => {
-        console.log(resp);
-      });
-  });
-  
+document.querySelector("#search").addEventListener("click", (event) => {
+  event.preventDefault();
+  let round = document.querySelector('#search-form input[name="round"]').value;
+  let date = document.querySelector('#search-form input[name="date"]').value;
+  let loc = document.querySelector('#search-form select[name="location"]').value;
+  let time = document.querySelector('#search-form input[name="time"]').value;
+  let team1 = document.querySelector('#search-form select[name="team-1"]').value;
+  let team2 = document.querySelector('#search-form select[name="team-2"]').value;
+  console.log(round);
+  fetch("http://localhost:3001/save-request", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ round, date, loc, time, team1, team2 }),
+  })
+    .then((resp) => resp.json())
+    .then((resp) => {
+      console.log(resp);
+    });
+});
 
 ///////////////////////////////////////////////////
 document.querySelector(".show-matches").addEventListener("click", (event) => {
