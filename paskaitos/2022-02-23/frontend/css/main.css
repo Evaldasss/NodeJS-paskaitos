@@ -217,41 +217,42 @@ li {
 .show-matches {
   background-color: red;
   width: 15rem;
- font-size: 1rem; ;
- border: 2px solid black;
- transform: scale(1.01);
+  font-size: 1rem;
+  border: 2px solid black;
+  transform: scale(1.01);
 }
 .show-matches:hover {
-transform: scale(1);
+  transform: scale(1);
 }
 
-.edit, .delete {
+.edit,
+.delete {
   width: 6rem;
- margin-left: 1rem;
+  margin-left: 1rem;
   padding: 0.3rem 1rem;
   color: white;
 }
 .edit {
-background-color: black;
+  background-color: black;
 }
-.delete{
+.delete {
   background-color: red;
-
 }
-.search-result-list{
+.search-result-list {
   display: flex;
   flex-direction: column;
   width: 60vw;
 }
-h3{
- margin: 2rem 0;
+h3 {
+  margin: 2rem 0;
 }
-.row{
+.row {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   width: 60vw;
   margin: 0.5rem 0;
-
+  padding-bottom: 0.5rem;;
+  border-bottom: 1px solid grey;
 }
