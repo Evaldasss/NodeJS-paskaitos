@@ -87,19 +87,6 @@ app.post("/save-request", (req, res) => {
 });
 */
 
-/////////////////////////////////////////////////
-/* 
-/////tikrinam ar yra failas duomenu saugojimui/////// 
-app.get("/check-file", (req, res) => {
-  fs.access(filePath, (err) => {
-    if (err) {
-      res.json({ result: "failed" });
-    } else {
-      res.json({ result: "success" });
-    }
-  });
-});
-*/
 
 /////////////////////////////////////////////////
 //skirta duomenu saugojimui spaudziant "Rodyti registruotas rungtynes" mygtuka
@@ -110,6 +97,7 @@ app.post("/save-request", (req, res) => {
 
   fs.access(filePath, (err) => {   //tikrinama ar suskurtas duomenu saugojimo failas
     if (err) {                     //jei failo nera, ty ismetamas 'error'
+      req.body.id = 0              //pradinis duomenu saugojimo 'id' tik sukurus faila butu 0
       masyvas.push(req.body);      //i tuscia masyva sukelti req.body, kuri paimam is 'FETCH ('.../save-request') "body"
       fs.writeFile(filePath, JSON.stringify(masyvas), "utf8", (err) => {  //cia sukuriamas ir irasomas failas. 
         if (!err) {                                                       //Kadangi failas sukuriamas naujai, tai issaugomas turinys yra tas 'masyvas' paverstas i stringa
@@ -124,7 +112,8 @@ app.post("/save-request", (req, res) => {
           res.json({ message: "Ivyko klaida" });  //jei ivyko klaida, pvz negalejo perskaityti failo, pc beda ir tt.
           return false;                           //grazinti 'false', kad sustotu kodas ir toliau nebebutu vykdomas
         }
-        let json = JSON.parse(data);    //sukuriamas kintamasis, kuriam priskiriami faile esantys duomenys(data), ty issifruotas i objekta .json stringas 
+        let json = JSON.parse(data);    //sukuriamas kintamasis- masyvas, kuriam priskiriami faile esantys duomenys(data), ty issifruotas i objekta .json stringas 
+        req.body.id = json[json.length - 1].id + 1;   //identifikatoriui 'id' priskiriama reiksme: paskutini masyvo indeksa  
         json.push(req.body);            //i ta objekta, kuri konvertavome is .json stringo, sukeliame(push) naujus gautus duomenis is FETCH "body", ty inputo info
 
         fs.writeFile(filePath, JSON.stringify(json), "utf8", (err) => {  //faile irasomas naujas turinys(data)- i objekta paverstas .json stringas
@@ -140,8 +129,8 @@ app.post("/save-request", (req, res) => {
 });
 
 /////////////////////////////////////////////////
-//skirta mygtukui "Rodyti registruotas rungtynes"
-app.get("/show-matches", (req, res) => {
+//skirta mygtukui "Rodyti registruotas rungtynes". Aprasyta kaip paimti rezultata is formos
+app.get("/show-matches", (req, res) => {             //kreipiamasi nurodytu adresu
   fs.access(filePath, (err) => {
     let message = "Duomenų bazės failas nerastas";
     if (err) {
@@ -150,7 +139,7 @@ app.get("/show-matches", (req, res) => {
       fs.readFile(filePath, "utf8", (err, data) => {
         if (err) return false;
 
-        let info = JSON.parse(data);
+        let info = JSON.parse(data);     // paimamas rezultatas is adreso, i kuri kreipiames su situo route'u
 
         res.json({ info, result: false });
       });
@@ -158,6 +147,30 @@ app.get("/show-matches", (req, res) => {
   });
 });
 
+/////////////////////////////////////////////////
+/* 
+/////tikrinam ar yra failas duomenu saugojimui/////// 
+app.get("/check-file", (req, res) => {
+  fs.access(filePath, (err) => {
+    if (err) {
+      res.json({ result: "failed" });
+    } else {
+      res.json({ result: "success" });
+    }
+  });
+});
+*/
+
+/////////////////////////////////////////////////
+app.put('/:id', (req, res) => {
+  console.log(req.body);
+  res.json({ response: req.body});
+})
+
+app.delete('/:id', (req, res) => {
+  console.log(req.params.id);        //pgl 'id' esanti pnjekte istrinamas objektas is duombazes
+  res.json({ response: req.params.id});
+})
 
 
 app.listen(3001);

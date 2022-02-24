@@ -60,7 +60,6 @@ document.querySelector(".two").style.display = "none";
 document.querySelector(".match-stage").style.display = "none";
 document.querySelector(".scores").style.display = "none";
 
-
 // mygtukas "Naujos rungtynės" . Atidaro didele forma.
 // Ja zpildzius ir paspaudus sita mygtuka, pasinaikina inputo reiksmes.
 document.querySelector(".new-match").addEventListener("click", () => {
@@ -185,10 +184,16 @@ document.querySelector("#search").addEventListener("click", (event) => {
   event.preventDefault();
   let round = document.querySelector('#search-form input[name="round"]').value;
   let date = document.querySelector('#search-form input[name="date"]').value;
-  let loc = document.querySelector('#search-form select[name="location"]').value;
+  let loc = document.querySelector(
+    '#search-form select[name="location"]'
+  ).value;
   let time = document.querySelector('#search-form input[name="time"]').value;
-  let team1 = document.querySelector('#search-form select[name="team-1"]').value;
-  let team2 = document.querySelector('#search-form select[name="team-2"]').value;  
+  let team1 = document.querySelector(
+    '#search-form select[name="team-1"]'
+  ).value;
+  let team2 = document.querySelector(
+    '#search-form select[name="team-2"]'
+  ).value;
   console.log(round);
   fetch("http://localhost:3001/save-request", {
     method: "POST",
@@ -201,6 +206,7 @@ document.querySelector("#search").addEventListener("click", (event) => {
     });
 });
 
+/*
 ///////////////////////////////////////////////////
 // mygtukas "Rodyti registruotas rungtynes"  Atvaizduoja narsyklej sarasa rungtyniu, pagal "Search" is dideles formos suvestus input
 document.querySelector(".show-matches").addEventListener("click", (event) => {
@@ -216,13 +222,15 @@ document.querySelector(".show-matches").addEventListener("click", (event) => {
         // document.querySelector(".not-found").innerHTML = resp.message;
       } else {
         resp.info.forEach((el) => {
-        /*
-          document.querySelector(".search-result-list").innerHTML += `<tr class='show-data--match'>
-            <td>${el.team1}  vs  ${el.team2}</td>    
-            <td>Round: ${el.round}</td>
-            <td>${el.date} at ${el.time}</td><td><button type="Submit" class='show-data--match-btn'>Edit</button><button type="delete" class='show-data--match-btn'>Delete</button></td></tr>`;
-        */
-            document.querySelector(".search-result-list").innerHTML += `<div class="row">
+         
+          // document.querySelector(".search-result-list").innerHTML += `<tr class='show-data--match'>
+          //   <td>${el.team1}  vs  ${el.team2}</td>    
+          //   <td>Round: ${el.round}</td>
+          //   <td>${el.date} at ${el.time}</td><td><button type="Submit" class='show-data--match-btn'>Edit</button><button type="delete" class='show-data--match-btn'>Delete</button></td></tr>`;
+        
+          document.querySelector(
+            ".search-result-list"
+          ).innerHTML += `<div class="row">
             
             <div class="teams">${el.team1} vs ${el.team2}</div>
             <div class="date-time">${el.date} ${el.time}</div>
@@ -231,15 +239,52 @@ document.querySelector(".show-matches").addEventListener("click", (event) => {
             <button class="edit">Redaguoti</button>
             <button class="delete">Ištrinti</button>
            </div>
-            </div>`
-            
+            </div>`;
         });
-         
-
       }
-
     });
 });
+*/
+
+
+///////////////////////////////////////////////////
+// "Rodyti registruotas rungtynes" BE MYGTUKO Atvaizduoja narsyklej sarasa rungtyniu, pagal "Search" is dideles formos suvestus input
+//Rezultata paima su backende aprasytu "app.get("/show-matches"..)" metodu
+let vidus = "";
+
+fetch("http://localhost:3001/show-matches")
+  .then((resp) => resp.json())
+  .then((resp) => {
+    console.log("FETCH resp", resp); //gaunamas is backend grazinamas rezultatas
+
+    if (resp.result) {
+      alert(resp.message);
+      // document.querySelector(".not-found").innerHTML = resp.message;
+    } else {
+      resp.info.forEach((el) => {
+               vidus += `<tr>
+                <td>${el.id}</td>
+                <td>${el.team1} vs ${el.team2}</td>
+                <td>${el.date}${el.time}</td>
+                <td>${el.round}</td>
+                <td><button data-id="${el.id}" class="delete">Delete</button></td>
+                </tr>`;
+        });
+
+        let table = `<table>
+            <tbody>
+                ${vidus}
+            </tbody>
+        </table>`;
+
+        document.querySelector(".search-result-list").innerHTML = table;
+        document.querySelectorAll(".delete").forEach((el) => {
+          el.addEventListener("click", () => {
+            alert(el.getAttribute("data-id"));
+          });
+        });
+      }
+  });
 
 ///////////////////////////////////////////////////
 //tikrinam ar yra failas duomenu saugojimui

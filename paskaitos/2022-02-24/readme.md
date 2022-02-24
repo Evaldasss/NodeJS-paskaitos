@@ -1,0 +1,3 @@
+Backende prie kiekvieno perduodamo įrašo priskirkite indeksą pavadinimu id. Tai yra indentifikatorius kuriuo remiantis bus galima kreiptis į kievieną iš jų individualiai. Indentifikatorių priskirkite automatiškai didėjimo tvarka. T.y. jei jei paskutinis elementas masyve turėjo objektą su indekso reikšme 1, sekanti reikšmė turi būti 2. Indentifikatoriai duomenų bazės faile kartotis negali!
+Startinis id = 0.
+//Auto increment budas.

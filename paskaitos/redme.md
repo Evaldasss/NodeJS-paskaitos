@@ -39,3 +39,16 @@ Po duomenų supildymo visų laukelių reikšmes padarykite tuščias.
 2. Sukurkite naują mygtuką frontende ir routerį backende. Sutikrinkite ar duomenų bazės failas yra sukurtas ir rezultatą atvaizduokite frontend konsolėje.
 
 3. Integruokite failo tikrinimą į failo skaitymo routerį ir duomenis grąžinkite tik tokiu atveju jei JSON failas buvo sukurtas. Priešingu atveju į frontendą grąžinkite žinutę: "Duomenų bazės failas nerastas".
+
+## 2022-02-23
+#### Krepšinio varžybos:
+1. Duomenu is formos issaugojimas ir nauju pridejimas, neperrasant ankstesniu duomenu.
+
+2. Duomenu is duombazes atvaizdavimas narsykleje '.forEach' metodu.
+
+## 2022-02-24
+#### Krepšinio varžybos:
+1. Backende prie kiekvieno perduodamo įrašo priskirkite indeksą pavadinimu id. Tai yra indentifikatorius kuriuo remiantis bus galima kreiptis į kievieną iš jų individualiai. Indentifikatorių priskirkite automatiškai didėjimo tvarka. T.y. jei jei paskutinis elementas masyve turėjo objektą su indekso reikšme 1, sekanti reikšmė turi būti 2. Indentifikatoriai duomenų bazės faile kartotis negali!
+Startinis id = 0
+ 
+2. Duomenu trynimo mygtuko ijungimas
