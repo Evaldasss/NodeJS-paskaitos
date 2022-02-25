@@ -52,3 +52,7 @@ Po duomenų supildymo visų laukelių reikšmes padarykite tuščias.
 Startinis id = 0
  
 2. Duomenu trynimo mygtuko ijungimas
+
+## 2022-02-25
+#### Krepšinio varžybos:
+Ištrinkite iš JSON failo duomenis pagal persiunčiamą indentifikatorių. Atlikite indentifikatoriaus validaciją. Jeigu pagal persiunčiamą ID nepavyko rasti elemento masyve, tuomet grąžinkite žinutę: "Įvyko klaida, toks įrašas nerastas". Priešingu atveju grąžinkite žinutę: "Įrašas sėkmingai ištrintas"
