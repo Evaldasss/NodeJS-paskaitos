@@ -217,9 +217,9 @@ app.delete("/:id", (req, res) => {
     fs.writeFile(filePath, JSON.stringify(jsonData), "utf8", (err) => {
       // i 'data.json' faila irasome likusius objektus
       if (!err) {
-        res.json({ result: jsonData, message: "Informacija issaugoti pavyko" });
+        res.json({ result: jsonData, message: "Įrašas sėkmingai ištrintas" });
       } else {
-        res.json({ message: "Nepavyko sukurti failo..." });
+        res.json({ message: "Įvyko klaida, toks įrašas nerastas..." });
       }
     });
   });
