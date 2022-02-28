@@ -76,7 +76,6 @@ document.querySelector(".new-match").addEventListener("click", () => {
   document.querySelector(".bottom").style.display = "none";
 });
 
-
 /*
 ///////////////////////////////////////////////////
 // mygtukas "Search"  Uzpildzius forma, paspaudus 'search', atvaizduoja visa input info narsykleje
@@ -138,7 +137,6 @@ document.querySelector("#search").addEventListener("click", (event) => {
 });
 */
 
-
 /*
 ///////////////////////////////////////////////////
 //mygtukas "Save"  Mazoje formoje suvedus duomenis.
@@ -164,7 +162,6 @@ document.querySelector("#save-data").addEventListener("click", (event) => {
 });
 */
 
-
 ///////////////////bandau paimti visas input reiksmes is dideles formos////////////////////////////////
 //mygtukas didelej formoj "Search"
 document.querySelector("#search").addEventListener("click", (event) => {
@@ -181,7 +178,7 @@ document.querySelector("#search").addEventListener("click", (event) => {
   let team2 = document.querySelector(
     '#search-form select[name="team-2"]'
   ).value;
-  console.log(round);
+  //console.log(round);
   fetch("http://localhost:3001/save-request", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -189,10 +186,12 @@ document.querySelector("#search").addEventListener("click", (event) => {
   })
     .then((resp) => resp.json())
     .then((resp) => {
-      console.log(resp);
+      //console.log(resp);
+      if (resp.status == "success") {
+        displayList(JSON.parse(resp.jsonResp));
+      }
     });
 });
-
 
 /*
 ///////////////////////////////////////////////////
@@ -226,7 +225,6 @@ document.querySelector(".show-matches").addEventListener("click", (event) => {
     });
 });
 */
-
 
 ///////////////////////////////////////////////////
 // "Rodyti registruotas rungtynes" BE MYGTUKO Atvaizduoja narsyklej sarasa rungtyniu, pagal "Search" is dideles formos suvestus input
@@ -270,59 +268,89 @@ fetch("http://localhost:3001/show-matches")
   });
 */
 
-
 ///////////////////////////////////////////////////
 // siunciamas i backend identifikatorius 'id' (ta pati fetch nuo 256eilutes)
 // ISTRINAMAS OBJEKTAS is duomenu failo
+document.querySelector(".show-matches").addEventListener("click", (event) => {
+  event.preventDefault();
 
-let vidus = "";
+  fetch("http://localhost:3001/show-matches")
+    .then((resp) => resp.json())
+    .then((resp) => {
+      console.log("FETCH resp", resp); //gaunamas is backend grazinamas rezultatas
+      displayList(resp);
+    });
+});
 
-fetch("http://localhost:3001/show-matches")
-  .then((resp) => resp.json())
-  .then((resp) => {
-    console.log("FETCH resp", resp); //gaunamas is backend grazinamas rezultatas
+const displayList = (resp) => {
+  let vidus = "";
+  // if (resp.result) {
+  //   alert(resp.message);
+  //   // document.querySelector(".not-found").innerHTML = resp.message;
+  // } else {
 
-    if (resp.result) {
-      alert(resp.message);
-      // document.querySelector(".not-found").innerHTML = resp.message;
-    } else {
-      resp.info.forEach((el) => {
-        vidus += `<tr>
+  resp.info.forEach((el) => {
+    vidus += `<tr>
                 <td>${el.id}</td>
                 <td>${el.team1} vs ${el.team2}</td>
                 <td>${el.date}${el.time}</td>
                 <td>${el.round}</td>
+                <td><button data-id="${el.id}" class="edit">Edit</button></td>
                 <td><button data-id="${el.id}" class="delete">Delete</button></td>
                 </tr>`;
-      });
+  });
 
-      let table = `<table>
+  let table = `<table>
             <tbody>
                 ${vidus}
             </tbody>
         </table>`;
 
-      document.querySelector(".search-result-list").innerHTML = table;
+  document.querySelector(".search-result-list").innerHTML = table;
 
-      document.querySelectorAll(".delete").forEach((el) => {
-        el.addEventListener("click", (event) => {
-          event.preventDefault();
+  // DUOMENU ISTRYNIMAS ***************************
+  document.querySelectorAll(".delete").forEach((el) => {
+    el.addEventListener("click", (event) => {
+      event.preventDefault();
 
-          let id = el.getAttribute("data-id");
+      let id = el.getAttribute("data-id");
 
-          fetch(`http://localhost:3001/${id}`, {
-            method: "DELETE",
-          })
-            .then((resp) => resp.json())
-            .then((response) => {
-              console.log("F2 response", response);
-            });
+      fetch(`http://localhost:3001/${id}`, {
+        method: "DELETE",
+      })
+        .then((resp) => resp.json())
+        .then((resp) => {
+          console.log("F2 response", resp);
+          if (resp.status === "success") {
+            displayList(JSON.parse(resp.jsonResp));
+          }
         });
-      });
-    }
+    });
   });
 
-  
+  // DUOMENU REDAGAVIMAS ***************************
+  document.querySelectorAll(".edit").forEach((el) => {
+    el.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      let id = el.getAttribute("data-id");
+
+      fetch(`http://localhost:3001/get-match/${id}`)
+        .then((resp) => resp.json())
+        .then((resp) => {
+          //console.log(resp);
+          displayList(resp);
+        });
+    });
+  });
+};
+
+fetch("http://localhost:3001/show-matches")
+  .then((resp) => resp.json())
+  .then((resp) => {
+    displayList(resp);
+  });
+
 ///////////////////////////////////////////////////
 //tikrinam ar yra failas duomenu saugojimui
 /*
