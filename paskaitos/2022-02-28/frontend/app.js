@@ -288,7 +288,7 @@ const displayList = (resp) => {
   //   alert(resp.message);
   //   // document.querySelector(".not-found").innerHTML = resp.message;
   // } else {
-console.log("TEST", resp.jsonResp)
+console.log("TEST", resp)
 
   resp.forEach((el) => {
     vidus += `<tr>
@@ -322,7 +322,7 @@ console.log("TEST", resp.jsonResp)
       })
         .then((resp) => resp.json())
         .then((resp) => {
-          console.log("F2 response", resp);
+          //console.log("F2 response", resp);
           if (resp.status === "success") {
             displayList(JSON.parse(resp.jsonResp));
           }
@@ -350,7 +350,7 @@ console.log("TEST", resp.jsonResp)
 fetch("http://localhost:3001/show-matches")
   .then((resp) => resp.json())
   .then((resp) => {
-    displayList(resp);
+    displayList(resp.jsonResp);
   });
 
 ///////////////////////////////////////////////////
