@@ -288,8 +288,9 @@ const displayList = (resp) => {
   //   alert(resp.message);
   //   // document.querySelector(".not-found").innerHTML = resp.message;
   // } else {
+console.log("TEST", resp.jsonResp)
 
-  resp.info.forEach((el) => {
+  resp.forEach((el) => {
     vidus += `<tr>
                 <td>${el.id}</td>
                 <td>${el.team1} vs ${el.team2}</td>
@@ -300,7 +301,8 @@ const displayList = (resp) => {
                 </tr>`;
   });
 
-  let table = `<table>
+  let table = 
+       `<table>
             <tbody>
                 ${vidus}
             </tbody>
@@ -338,8 +340,8 @@ const displayList = (resp) => {
       fetch(`http://localhost:3001/get-match/${id}`)
         .then((resp) => resp.json())
         .then((resp) => {
-          //console.log(resp);
-          displayList(resp);
+          console.log(resp);
+         
         });
     });
   });

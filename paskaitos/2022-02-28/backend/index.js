@@ -154,7 +154,7 @@ app.get("/show-matches", (req, res) => {
         if (err) return false;
 
         let info = JSON.parse(data); // paimamas rezultatas is adreso, i kuri kreipiames su situo route'u
-        res.json({ info, result: false });
+        res.json({ jsonResp: info, result: false });
       });
     }
   });
@@ -187,14 +187,6 @@ app.get('/get-match/:id', (req, res) => {
   })
 
 })
-
-
-
-
-
-
-
-
 
 /////////////////////////////////////////////////
 /* 
